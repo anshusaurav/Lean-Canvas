@@ -8,15 +8,41 @@ class FileUpload extends React.Component {
         super(props);
         this.state = {
             fileNames: [],
-            errorMsg: null
+            files: [],
+            errorMsgFile: null
         }
     }
+
     handleDrop = (acceptedFiles) => {
         if (acceptedFiles.length > 1) {
-            this.setState({ errorMsg: 'Please select one file' })
+            this.setState({ errorMsgFile: 'Please select one file' })
         }
         else {
-            console.log(acceptedFiles[0].preview)
+            let validFile = true;
+            acceptedFiles.forEach(file => {
+                if (file.name.endsWith('.md') || file.name.endsWith('.MD')) {
+
+                }
+                else {
+                    validFile = false;
+                }
+            })
+            if (validFile) {
+                this.setState({
+                    files: acceptedFiles.map(file =>
+                        Object.assign(file, {
+                            preview: URL.createObjectURL(file)
+                        })
+                    ),
+                    fileNames: acceptedFiles.map(file => file.name),
+                    errorMsgFile: null
+                });
+            }
+            else {
+                this.setState({ errorMsgFile: 'Invalid File Format' })
+            }
+
+            // console.log(acceptedFiles[0].preview)
         }
         var blobPromise = new Promise((resolve, reject) => {
             const reader = new window.FileReader();
@@ -27,12 +53,17 @@ class FileUpload extends React.Component {
             };
         });
         blobPromise.then(value => {
-            // console.log(value);
+            console.log(value);
         });
-        this.setState({ fileNames: acceptedFiles.map(file => file.name) });
+        // this.setState({ fileNames: acceptedFiles.map(file => file.name) });
 
     }
+    componentWillUnmount() {
+        // Make sure to revoke the data uris to avoid memory leaks
+        this.state.files.forEach(file => URL.revokeObjectURL(file.preview));
+    }
     render() {
+        const { errorMsgFile } = this.state;
         return (
             <div className="input-container">
                 <div>
@@ -69,13 +100,17 @@ class FileUpload extends React.Component {
                                         )}
                                     </Dropzone>
                                     <div>
-                                        {this.state.fileNames.length > 0 && <strong>File Selected:</strong>}
+                                        {this.state.fileNames.length > 0 && !errorMsgFile && <strong>File Selected:</strong>}
                                         <ul>
                                             {this.state.fileNames.map(fileName => (
                                                 <li key={fileName}>{fileName}</li>
                                             ))}
                                         </ul>
+                                        {
+                                            errorMsgFile && <p className='file-error-msg'>{errorMsgFile}</p>
+                                        }
                                     </div>
+
                                 </Grid.Column>
                             </Grid>
 
