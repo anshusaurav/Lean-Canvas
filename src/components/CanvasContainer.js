@@ -1,38 +1,57 @@
 import React, { Component } from 'react'
 class CanvasContainer extends Component {
+
     render() {
         return (
             <div className="lean-canvas-container">
-                <div class='a box'>
-                    <h2>Problem</h2>
+                <div className='a box'>
+                    <div className='box-content'>
+                        <h2>Problem</h2>
+                    </div>
                 </div>
-                <div class='b box'>
-                    <h2>Solution</h2>
+                <div className='b box'>
+                    <div className='box-content'>
+                        <h2>Solution</h2>
+                    </div>
                 </div>
-                <div class='c box'>
-                    <h2>Key Matrics</h2>
+                <div className='c box'>
+                    <div className="box-content">
+                        <h2>Key Matrics</h2>
+                    </div>
                 </div>
-                <div class='d box'>
-                    <h2>Unique Value Proposition</h2>
+                <div className='d box'>
+                    <div className="box-content">
+                        <h2>Unique Value Proposition</h2>
+                    </div>
                 </div>
-                <div class='e box'>
-                    <h2>Unfair Advantage</h2>
+                <div className='e box'>
+                    <div className="box-content">
+                        <h2>Unfair Advantage</h2>
+                    </div>
                 </div>
-                <div class='f box'>
-                    <h2>Channels</h2>
+                <div className='f box'>
+                    <div className="box-content">
+                        <h2>Channels</h2>
+                    </div>
                 </div>
-                <div class='g box'>
-                    <h2>Customer Segments</h2>
+                <div className='g box'>
+                    <div className="box-content">
+                        <h2>Customer Segments</h2>
+                    </div>
                 </div>
-                <div class='h box'>
-                    <h2>Cost Structure</h2>
+                <div className='h box'>
+                    <div className="box-content">
+                        <h2>Cost Structure</h2>
+                    </div>
                 </div>
 
-                <div class='i box'>
-                    <h2>Revenue Streams</h2>
+                <div className='i box'>
+                    <div className="box-content">
+                        <h2>Revenue Streams</h2>
+                    </div>
                 </div>
 
-            </div>
+            </div >
         )
     }
 }
