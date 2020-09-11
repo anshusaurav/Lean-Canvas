@@ -1,0 +1,50 @@
+.lean-canvas-container {
+  display: grid;
+  grid-gap: 1rem;
+  height: 100vh;
+  width: 100vw;
+  padding: 1rem;
+  box-sizing: border-box;
+  grid-template-areas:
+    "a a b b d d e e g g"
+    "a a c c d d f f g g"
+    "h h h h h i i i i i";
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(10, 1fr);
+  .a {
+    grid-area: a;
+    background-color: tan;
+  }
+  .b {
+    grid-area: b;
+    background-color: teal;
+  }
+  .c {
+    grid-area: c;
+    background-color: thistle;
+  }
+  .d {
+    grid-area: d;
+    background-color: tomato;
+  }
+  .e {
+    grid-area: e;
+    background-color: rebeccapurple;
+  }
+  .f {
+    grid-area: f;
+    background-color: wheat;
+  }
+  .g {
+    grid-area: g;
+    background-color: palegoldenrod;
+  }
+  .h {
+    grid-area: h;
+    background-color: palegreen;
+  }
+  .i {
+    grid-area: i;
+    background-color: lightcoral;
+  }
+}
