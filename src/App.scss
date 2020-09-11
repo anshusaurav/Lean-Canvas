@@ -1,4 +1,135 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700&display=swap");
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+  font-family: "Fira Sans", sans-serif;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
 .lean-canvas-container {
+  animation: 2s ease-in-out 0s 1 slideInFromLeft;
   display: grid;
   grid-gap: 1rem;
   height: 100vh;
@@ -11,6 +142,30 @@
     "h h h h h i i i i i";
   grid-template-rows: repeat(3, 1fr);
   grid-template-columns: repeat(10, 1fr);
+  .box {
+    position: relative;
+    padding: 0.5rem;
+    border-radius: 0.4rem;
+    &:after,
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      border-color: transparent;
+      border-style: solid;
+    }
+    &:before {
+      border-width: 1.5em;
+    }
+    &:after {
+      border-radius: 0.4rem;
+      border-width: 1.35rem;
+      border-right-color: #0c0;
+      border-top-color: #0c0;
+    }
+  }
+
   .a {
     grid-area: a;
     background-color: tan;
@@ -25,7 +180,7 @@
   }
   .d {
     grid-area: d;
-    background-color: tomato;
+    background-color: rgb(253, 130, 108);
   }
   .e {
     grid-area: e;
@@ -46,5 +201,14 @@
   .i {
     grid-area: i;
     background-color: lightcoral;
+  }
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
   }
 }
