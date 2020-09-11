@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.scss';
+import "semantic-ui-css/semantic.min.css";
 import CanvasContainer from './components/CanvasContainer';
 import FileUpload from './components/FileUpload';
 
