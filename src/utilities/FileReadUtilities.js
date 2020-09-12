@@ -27,3 +27,9 @@ export const readText = async (files) => {
     return res;
 
 }
+
+export const htmlDecode = (s) => {
+    var el = document.createElement("div");
+    el.innerHTML = s;
+    return el.innerText || el.textContent;
+}

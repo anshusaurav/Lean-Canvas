@@ -9,14 +9,38 @@ class FileUpload extends React.Component {
         super(props);
         this.state = {
             file: null,
-            markdown: "",
+            // markdown: "",
             errorMsgFile: null,
             isLoading: false,
+            isSubmitable: false
         }
     }
 
+    handleChange = (event) => {
+        this.props.onChange(event.target.value);
+        this.checkValidMarkdown();
+    }
+    handleSubmit = (event) => {
+        event.preventDefault();
+        this.setState({ isLoading: true });
+        this.getLeanCanvas();
+
+
+    }
+
+    getLeanCanvas = () => {
+        const { history } = this.props;
+        history.push('/results');
+    }
+    checkValidMarkdown = () => {
+        const { markdown } = this.props;
+        if (markdown.length <= 0) {
+            this.setState({ isSubmitable: false })
+        }
+        else
+            this.setState({ isSubmitable: true })
+    }
     handleDrop = (acceptedFiles) => {
-        // console.log(acceptedFiles);
         if (acceptedFiles.length > 1) {
             this.setState({ errorMsgFile: 'Please select one file' })
         }
@@ -36,10 +60,12 @@ class FileUpload extends React.Component {
 
                 reader.onload = (e) => {
                     this.setState({
-                        markdown: reader.result,
+
                         errorMsgFile: null,
-                        file: acceptedFiles[0]
+                        file: acceptedFiles[0],
+                        isSubmitable: true,
                     });
+                    this.props.onChange(reader.result);
                 }
 
                 reader.readAsText(file);
@@ -49,9 +75,12 @@ class FileUpload extends React.Component {
             }
         }
     }
-
+    componentDidMount() {
+        this.checkValidMarkdown();
+    }
     render() {
-        const { errorMsgFile, file } = this.state;
+        const { errorMsgFile, file, isSubmitable, isLoading } = this.state;
+        const { markdown } = this.props;
         return (
             <div className="input-container">
                 <div>
@@ -59,14 +88,18 @@ class FileUpload extends React.Component {
                         <Segment placeholder>
                             <Grid columns={2} style={{ width: 780, height: 460 }}>
                                 <Grid.Column>
-
+                                    <div className="toolbar">
+                                        Editor
+                                    </div>
                                     <TextArea
                                         fluid
                                         icon='user'
                                         iconPosition='left'
                                         label='Enter markdown'
                                         placeholder='Markdown content here'
-                                        style={{ resize: 'none', height: 380, minWidth: 330, marginBottom: 16 }}
+                                        style={{ resize: 'none', height: 380, minWidth: 360, marginBottom: 16 }}
+                                        value={markdown}
+                                        onChange={this.handleChange}
                                     />
                                 </Grid.Column>
 
@@ -75,21 +108,41 @@ class FileUpload extends React.Component {
                                         onDrop={this.handleDrop}
                                         multiple={false}
                                     >
+
                                         {({ getRootProps, getInputProps, isDragActive }) => (
                                             <div {...getRootProps({ className: "dropzone" })}>
                                                 <input {...getInputProps()} />
                                                 <span style={{ fontSize: 24 }}>{isDragActive ? "📂" : "📁"}</span>
                                                 <p>Drag'n'drop markdown, or click to select file</p>
+                                                {file && <div className="file-preview">
+                                                    <div className="file-preview-img">
+
+                                                    </div>
+                                                    <div className="file-preview-details">
+                                                        <div className="file-preview-details-size">
+                                                            <span>
+                                                                <strong>
+                                                                    {file.size / 1000}
+                                                                </strong>
+                                                                     KB
+                                                            </span>
+                                                        </div>
+                                                        <div className="file-preview-details-filename">
+                                                            <span>
+                                                                {file.name}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                }
                                             </div>
                                         )}
+                                        {/* {
+                                            
+                                        } */}
                                     </Dropzone>
                                     <div>
-                                        {file && !errorMsgFile && <strong>File Selected:</strong>}
-                                        {file &&
-                                            <ul>
-                                                <li key={file.name}>{file.name}</li>
-                                            </ul>
-                                        }
+
                                         {
                                             errorMsgFile && <p className='file-error-msg'>{errorMsgFile}</p>
                                         }
@@ -101,7 +154,15 @@ class FileUpload extends React.Component {
                             <Divider vertical>Or</Divider>
                         </Segment>
                     </div>
-                    <Button attached='bottom' content='Submit' primary positive />
+                    <Button
+                        attached='bottom'
+                        content='Submit'
+                        primary
+                        positive
+                        onClick={this.handleSubmit}
+                        disabled={!isSubmitable}
+                        loading={isLoading}
+                    />
                 </div>
             </div>
 

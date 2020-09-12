@@ -1,5 +1,3 @@
-#Google
-
 ## Problem
 
 - Irrelevant Search Results
