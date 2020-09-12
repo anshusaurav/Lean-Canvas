@@ -92,9 +92,8 @@ class FileUpload extends React.Component {
                                         Editor
                                     </div>
                                     <TextArea
-                                        fluid
+                                        fluid="true"
                                         icon='user'
-                                        iconPosition='left'
                                         label='Enter markdown'
                                         placeholder='Markdown content here'
                                         style={{ resize: 'none', height: 380, minWidth: 360, marginBottom: 16 }}

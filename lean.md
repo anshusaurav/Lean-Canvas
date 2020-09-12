@@ -16,7 +16,7 @@ Lean Canvas
 
 ## Unique-Value-Proposition
 
-**Single**, _clear_, `compelling` message that states why you are different and worth buying
+- **Single**, _clear_, `compelling` message that states why you are different and worth buying
 
 ## Solution
 
