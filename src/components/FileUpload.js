@@ -1,19 +1,22 @@
 import React from "react";
 import Dropzone from "react-dropzone";
-import { TextArea, Button, Segment, Grid, Form, Divider } from 'semantic-ui-react'
-
+import { withRouter } from 'react-router-dom'
+import { TextArea, Button, Segment, Grid, Divider } from 'semantic-ui-react'
+// import { checkFileAPI, readText } from '../utilities/FileReadUtilities'
 // for pdf files
 class FileUpload extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            fileNames: [],
-            files: [],
-            errorMsgFile: null
+            file: null,
+            markdown: "",
+            errorMsgFile: null,
+            isLoading: false,
         }
     }
 
     handleDrop = (acceptedFiles) => {
+        // console.log(acceptedFiles);
         if (acceptedFiles.length > 1) {
             this.setState({ errorMsgFile: 'Please select one file' })
         }
@@ -28,42 +31,27 @@ class FileUpload extends React.Component {
                 }
             })
             if (validFile) {
-                this.setState({
-                    files: acceptedFiles.map(file =>
-                        Object.assign(file, {
-                            preview: URL.createObjectURL(file)
-                        })
-                    ),
-                    fileNames: acceptedFiles.map(file => file.name),
-                    errorMsgFile: null
-                });
+                let file = acceptedFiles[0];
+                var reader = new FileReader();
+
+                reader.onload = (e) => {
+                    this.setState({
+                        markdown: reader.result,
+                        errorMsgFile: null,
+                        file: acceptedFiles[0]
+                    });
+                }
+
+                reader.readAsText(file);
             }
             else {
                 this.setState({ errorMsgFile: 'Invalid File Format' })
             }
-
-            // console.log(acceptedFiles[0].preview)
         }
-        var blobPromise = new Promise((resolve, reject) => {
-            const reader = new window.FileReader();
-            reader.readAsDataURL(acceptedFiles[0]);
-            reader.onloadend = () => {
-                const base64data = reader.result;
-                resolve(base64data);
-            };
-        });
-        blobPromise.then(value => {
-            console.log(value);
-        });
-        // this.setState({ fileNames: acceptedFiles.map(file => file.name) });
+    }
 
-    }
-    componentWillUnmount() {
-        // Make sure to revoke the data uris to avoid memory leaks
-        this.state.files.forEach(file => URL.revokeObjectURL(file.preview));
-    }
     render() {
-        const { errorMsgFile } = this.state;
+        const { errorMsgFile, file } = this.state;
         return (
             <div className="input-container">
                 <div>
@@ -80,16 +68,12 @@ class FileUpload extends React.Component {
                                         placeholder='Markdown content here'
                                         style={{ resize: 'none', height: 380, minWidth: 330, marginBottom: 16 }}
                                     />
-
-
-
-
                                 </Grid.Column>
 
                                 <Grid.Column >
                                     <Dropzone
                                         onDrop={this.handleDrop}
-
+                                        multiple={false}
                                     >
                                         {({ getRootProps, getInputProps, isDragActive }) => (
                                             <div {...getRootProps({ className: "dropzone" })}>
@@ -100,12 +84,12 @@ class FileUpload extends React.Component {
                                         )}
                                     </Dropzone>
                                     <div>
-                                        {this.state.fileNames.length > 0 && !errorMsgFile && <strong>File Selected:</strong>}
-                                        <ul>
-                                            {this.state.fileNames.map(fileName => (
-                                                <li key={fileName}>{fileName}</li>
-                                            ))}
-                                        </ul>
+                                        {file && !errorMsgFile && <strong>File Selected:</strong>}
+                                        {file &&
+                                            <ul>
+                                                <li key={file.name}>{file.name}</li>
+                                            </ul>
+                                        }
                                         {
                                             errorMsgFile && <p className='file-error-msg'>{errorMsgFile}</p>
                                         }
@@ -125,4 +109,4 @@ class FileUpload extends React.Component {
     }
 }
 
-export default FileUpload;
+export default withRouter(FileUpload);
