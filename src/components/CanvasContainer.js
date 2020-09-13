@@ -2,8 +2,8 @@ import React, { Component, createRef } from 'react'
 import ReactMarkdown from "react-markdown";
 import marked from "marked";
 import { Icon, Button } from 'semantic-ui-react'
-import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
+
+import { exportComponentAsPNG } from "react-component-export-image";
 marked.setOptions({
     breaks: true
 });
@@ -32,6 +32,7 @@ class CanvasContainer extends Component {
         this.costStructureRef = createRef();
         this.revenueStreamsRef = createRef();
         this.canvasHeadingRef = createRef();
+        this.canvasWrapperRef = createRef();
 
     }
     parseHTML = () => {
@@ -77,26 +78,10 @@ class CanvasContainer extends Component {
             virtualElem.querySelector('#revenue-stream + *');
         this.revenueStreamsRef.current.innerHTML = elemRevenueStreams.innerHTML;
     }
-
-    exportPdf = () => {
-        const input = document.querySelector('.canvas-wrapper');
-        const divHeight = input.clientHeight
-        const divWidth = input.clientWidth
-        const ratio = divHeight / divWidth;
-
-        html2canvas(input, { scale: '1' }).then((canvas) => {
-            const imgData = canvas.toDataURL('image/jpeg');
-            const pdfDOC = new jsPDF("l", "mm", "a0"); //  use a4 for smaller page
-
-            const width = pdfDOC.internal.pageSize.getWidth();
-            let height = pdfDOC.internal.pageSize.getHeight();
-            height = ratio * width;
-
-            pdfDOC.addImage(imgData, 'JPEG', 0, 0, width - 20, height - 10);
-            pdfDOC.save('summary.pdf');   //Download the rendered PDF.
-        })
-
+    exportAsPng = () => {
+        exportComponentAsPNG(this.canvasWrapperRef)
     }
+
     componentDidMount() {
         this.parseHTML();
     }
@@ -108,11 +93,11 @@ class CanvasContainer extends Component {
                     <ReactMarkdown source={this.props.markdown} />
                 </div>
                 <Button icon='save'
-                    content='Export as PDF'
+                    content='Export as PNG'
                     className="canvas-save-btn"
-                    onClick={this.exportPdf} />
+                    onClick={this.exportAsPng} />
 
-                <div className="canvas-wrapper">
+                <div className="canvas-wrapper" ref={this.canvasWrapperRef}>
                     <h1 ref={this.canvasHeadingRef}> </h1>
 
                     <div className="lean-canvas-container">
