@@ -133,7 +133,6 @@ table {
   word-wrap: break-word;
 }
 .input-container {
-  // display: grid;
   animation: 1s ease-out 0s 1 animate;
   display: flex;
   align-items: center;
@@ -143,6 +142,7 @@ table {
   background-color: rgba(0, 0, 0, 0.65);
   .input-wrapper {
     background-color: white;
+    border-radius: 1 1 0.28571429rem 0.28571429rem;
   }
   .slide-right {
     animation: 1s ease-out 0s 1 animate;
@@ -161,16 +161,16 @@ table {
     border-width: 1px;
     border-bottom-width: 0px;
     border-radius: 10px 10px 0px 0px;
-    box-shadow: 1px -1px 4px 5px rgba(0, 0, 0, 0.3);
   }
   textarea {
     font-family: "Fira Sans", sans-serif;
     padding: 0.5rem;
     border-style: solid;
-    // border-width: 1.5px;
-    border-bottom-width: 0px;
+    resize: none;
+    height: 380px;
+    min-width: 360px;
+    margin-bottom: 16px;
     border-radius: 0px 0px 10px 10px;
-    box-shadow: 1px 6px 10px 5px rgba(0, 0, 0, 0.3);
     &:placeholder {
       text-align: center;
     }
@@ -190,7 +190,6 @@ table {
     background-color: #fafafa;
     color: #bdbdbd;
     vertical-align: center;
-    // border: 2px dashed;
     height: 408px;
     position: relative;
   }
@@ -199,13 +198,11 @@ table {
     top: 60px;
     left: 108px;
     display: inline-block;
-    // vertical-align: top;
     margin: 16px;
     min-height: 100px;
     cursor: default;
     .file-preview-img {
       border-radius: 20px;
-      // background: #999;
       background: linear-gradient(to bottom, #eee, #ddd);
       overflow: hidden;
       width: 120px;
@@ -224,7 +221,6 @@ table {
       position: absolute;
       top: 0;
       left: 0;
-      // opacity: 0;
       font-size: 13px;
       min-width: 100%;
       max-width: 100%;
@@ -270,6 +266,8 @@ table {
     margin: 8px auto;
     width: 70vw;
     position: relative;
+    border-radius: 8px;
+    border: 2px solid #325bcd;
     background-color: rgb(255, 255, 255);
   }
   .canvas-save-btn {
@@ -312,6 +310,7 @@ table {
     height: 48px;
     margin-bottom: 0;
     padding: 0.5rem;
+    letter-spacing: 1px;
   }
 }
 .lean-canvas-container {
@@ -362,6 +361,7 @@ table {
       font-size: 18px;
       font-weight: 600;
       letter-spacing: 0.5px;
+      text-transform: uppercase;
     }
     .box-card-container {
       list-style: none;

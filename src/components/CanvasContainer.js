@@ -1,9 +1,8 @@
 import React, { Component, createRef } from 'react'
-
 import marked from "marked";
 import { Icon, Button } from 'semantic-ui-react'
-
-import { exportComponentAsPNG } from "react-component-export-image";
+import { parse } from 'md-2-json'
+import { exportComponentAsJPEG } from "react-component-export-image";
 marked.setOptions({
     breaks: true
 });
@@ -79,10 +78,12 @@ class CanvasContainer extends Component {
         this.revenueStreamsRef.current.innerHTML = elemRevenueStreams.innerHTML;
     }
     exportAsPng = () => {
-        exportComponentAsPNG(this.canvasWrapperRef)
+        exportComponentAsJPEG(this.canvasWrapperRef)
     }
 
     componentDidMount() {
+        console.log('here');
+        console.log(parse(this.props.markdown))
         this.parseHTML();
     }
 
@@ -95,7 +96,8 @@ class CanvasContainer extends Component {
                         className="canvas-save-btn"
                         onClick={this.exportAsPng} />
 
-                    <div className="canvas-wrapper" ref={this.canvasWrapperRef}>
+                    <div className="canvas-wrapper"
+                        ref={this.canvasWrapperRef}>
                         <h1 ref={this.canvasHeadingRef}> </h1>
 
                         <div className="lean-canvas-container">

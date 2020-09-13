@@ -1,8 +1,7 @@
 import React, { createRef } from "react";
 import Dropzone from "react-dropzone";
 import { TextArea, Button, Segment, Grid, Divider } from 'semantic-ui-react'
-// import { checkFileAPI, readText } from '../utilities/FileReadUtilities'
-// for pdf files
+
 class FileUpload extends React.Component {
     constructor(props) {
         super(props);
@@ -24,8 +23,6 @@ class FileUpload extends React.Component {
         event.preventDefault();
         this.setState({ isLoading: true });
         this.getLeanCanvas();
-
-
     }
 
     getLeanCanvas = () => {
@@ -85,7 +82,9 @@ class FileUpload extends React.Component {
                 <div>
                     <div className="input-wrapper" ref={this.wrapperRef}>
                         <Segment placeholder>
-                            <Grid columns={2} style={{ width: 780, height: 460 }}>
+                            <Grid
+                                columns={2}
+                                style={{ width: 780, height: 460 }}>
                                 <Grid.Column>
                                     <div className="toolbar">
                                         Editor
@@ -94,8 +93,7 @@ class FileUpload extends React.Component {
                                         fluid="true"
                                         icon='user'
                                         label='Enter markdown'
-                                        placeholder='Markdown content here'
-                                        style={{ resize: 'none', height: 380, minWidth: 360, marginBottom: 16 }}
+                                        placeholder='Enter markdown content here'
                                         value={markdown}
                                         onChange={this.handleChange}
                                     />
@@ -110,8 +108,12 @@ class FileUpload extends React.Component {
                                         {({ getRootProps, getInputProps, isDragActive }) => (
                                             <div {...getRootProps({ className: "dropzone" })}>
                                                 <input {...getInputProps()} />
-                                                <span style={{ fontSize: 24 }}>{isDragActive ? "📂" : "📁"}</span>
-                                                <p>Drag'n'drop markdown, or click to select file</p>
+                                                <span style={{ fontSize: 24 }}>
+                                                    {isDragActive ? "📂" : "📁"}
+                                                </span>
+                                                <p>
+                                                    Drag'n'drop markdown, or click to select file
+                                                </p>
                                                 {file && <div className="file-preview">
                                                     <div className="file-preview-img">
 
@@ -142,7 +144,10 @@ class FileUpload extends React.Component {
                                     <div>
 
                                         {
-                                            errorMsgFile && <p className='file-error-msg'>{errorMsgFile}</p>
+                                            errorMsgFile && (<p
+                                                className='file-error-msg'>
+                                                {errorMsgFile}
+                                            </p>)
                                         }
                                     </div>
 
