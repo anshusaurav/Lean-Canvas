@@ -261,12 +261,21 @@ table {
 .lean-canvas {
   animation: 1s ease-out 0s 1 animate;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  position: relative;
+  margin: 0 auto;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.65);
+  // grid-template-columns: 1fr 1fr;
+  // position: relative;
+  .canvas-main {
+    margin: 8px auto;
+    width: 70vw;
+    position: relative;
+    background-color: rgb(255, 255, 255);
+  }
   .canvas-save-btn {
     position: absolute;
-    top: 16px;
-    right: 16px;
+    top: 8px;
+    right: 8px;
     cursor: pointer;
     z-index: 1000;
   }
@@ -293,11 +302,13 @@ table {
 }
 .canvas-wrapper {
   // animation: 1s ease-out 0s 1 animate;
-  height: 100vh;
+  // height: 100vh;
   position: sticky;
   top: 0;
   right: 0;
   h1 {
+    font-size: 24px;
+    font-weight: 700;
     height: 48px;
     margin-bottom: 0;
     padding: 0.5rem;
@@ -306,8 +317,8 @@ table {
 .lean-canvas-container {
   display: grid;
   grid-gap: 1rem;
-  height: calc(100vh - 48px);
-  width: 50vw;
+  height: calc(100vh - 64px);
+  width: 70vw;
   padding: 1rem;
   box-sizing: border-box;
   grid-template-areas:
@@ -348,7 +359,7 @@ table {
     }
     h2 {
       z-index: 10;
-      font-size: 22px;
+      font-size: 18px;
       font-weight: 600;
       letter-spacing: 0.5px;
     }

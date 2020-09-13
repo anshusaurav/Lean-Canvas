@@ -1,5 +1,5 @@
 import React, { Component, createRef } from 'react'
-import ReactMarkdown from "react-markdown";
+
 import marked from "marked";
 import { Icon, Button } from 'semantic-ui-react'
 
@@ -13,7 +13,7 @@ class CanvasContainer extends Component {
         this.state = {
             problem: null,
             solution: '',
-            keyMetrics: '',
+            keyMetgitrics: '',
             unqiueValueProposition: '',
             unfairAdvantage: '',
             channels: '',
@@ -89,107 +89,106 @@ class CanvasContainer extends Component {
     render() {
         return (
             <div className='lean-canvas'>
-                <div className='previewer'>
-                    <ReactMarkdown source={this.props.markdown} />
-                </div>
-                <Button icon='save'
-                    content='Export as PNG'
-                    className="canvas-save-btn"
-                    onClick={this.exportAsPng} />
+                <div className="canvas-main">
+                    <Button icon='save'
+                        content='Export as PNG'
+                        className="canvas-save-btn"
+                        onClick={this.exportAsPng} />
 
-                <div className="canvas-wrapper" ref={this.canvasWrapperRef}>
-                    <h1 ref={this.canvasHeadingRef}> </h1>
+                    <div className="canvas-wrapper" ref={this.canvasWrapperRef}>
+                        <h1 ref={this.canvasHeadingRef}> </h1>
 
-                    <div className="lean-canvas-container">
-                        <div className='a box'>
-                            <div className='box-content'>
-                                <h2>Problem</h2>
-                                <div className="box-card-container"
-                                    ref={this.problemRef} >
+                        <div className="lean-canvas-container">
+                            <div className='a box'>
+                                <div className='box-content'>
+                                    <h2>Problem</h2>
+                                    <div className="box-card-container"
+                                        ref={this.problemRef} >
+                                    </div>
+                                    <Icon name='lock'
+                                        className="box-icon" />
                                 </div>
-                                <Icon name='lock'
-                                    className="box-icon" />
                             </div>
-                        </div>
-                        <div className='b box'>
-                            <div className='box-content'>
-                                <h2>Solution</h2>
-                                <div className="box-card-container"
-                                    ref={this.solutionRef}>
+                            <div className='b box'>
+                                <div className='box-content'>
+                                    <h2>Solution</h2>
+                                    <div className="box-card-container"
+                                        ref={this.solutionRef}>
+                                    </div>
+                                    <Icon name='key'
+                                        className="box-icon" />
                                 </div>
-                                <Icon name='key'
-                                    className="box-icon" />
                             </div>
-                        </div>
-                        <div className='c box'>
-                            <div className="box-content">
-                                <h2>Key Matrics</h2>
-                                <div className="box-card-container"
-                                    ref={this.keyMetricsRef}>
+                            <div className='c box'>
+                                <div className="box-content">
+                                    <h2>Key Matrics</h2>
+                                    <div className="box-card-container"
+                                        ref={this.keyMetricsRef}>
+                                    </div>
+                                    <Icon name='chart bar'
+                                        className="box-icon" />
                                 </div>
-                                <Icon name='chart bar'
-                                    className="box-icon" />
                             </div>
-                        </div>
-                        <div className='d box'>
-                            <div className="box-content">
-                                <h2>Unique Value Proposition</h2>
-                                <div className="box-card-container"
-                                    ref={this.unqiueValuePropositionRef}>
+                            <div className='d box'>
+                                <div className="box-content">
+                                    <h2>Unique Value Proposition</h2>
+                                    <div className="box-card-container"
+                                        ref={this.unqiueValuePropositionRef}>
+                                    </div>
+                                    <Icon name='gift'
+                                        className="box-icon" />
                                 </div>
-                                <Icon name='gift'
-                                    className="box-icon" />
                             </div>
-                        </div>
-                        <div className='e box'>
-                            <div className="box-content">
-                                <h2>Unfair Advantage</h2>
-                                <div className="box-card-container"
-                                    ref={this.unfairAdvantageRef}>
+                            <div className='e box'>
+                                <div className="box-content">
+                                    <h2>Unfair Advantage</h2>
+                                    <div className="box-card-container"
+                                        ref={this.unfairAdvantageRef}>
+                                    </div>
+                                    <Icon name='magic'
+                                        className="box-icon" />
                                 </div>
-                                <Icon name='magic'
-                                    className="box-icon" />
                             </div>
-                        </div>
-                        <div className='f box'>
-                            <div className="box-content">
-                                <h2>Channels</h2>
-                                <div className="box-card-container"
-                                    ref={this.channelsRef}>
+                            <div className='f box'>
+                                <div className="box-content">
+                                    <h2>Channels</h2>
+                                    <div className="box-card-container"
+                                        ref={this.channelsRef}>
+                                    </div>
+                                    <Icon name='expand arrows alternate'
+                                        className="box-icon" />
                                 </div>
-                                <Icon name='expand arrows alternate'
-                                    className="box-icon" />
                             </div>
-                        </div>
-                        <div className='g box'>
-                            <div className="box-content">
-                                <h2>Customer Segments</h2>
-                                <div className="box-card-container"
-                                    ref={this.customerSegmentsRef}>
+                            <div className='g box'>
+                                <div className="box-content">
+                                    <h2>Customer Segments</h2>
+                                    <div className="box-card-container"
+                                        ref={this.customerSegmentsRef}>
+                                    </div>
+                                    <Icon name='users'
+                                        className="box-icon" />
                                 </div>
-                                <Icon name='users'
-                                    className="box-icon" />
                             </div>
-                        </div>
-                        <div className='h box'>
-                            <div className="box-content">
-                                <h2>Cost Structure</h2>
-                                <div className="box-card-container"
-                                    ref={this.costStructureRef}>
+                            <div className='h box'>
+                                <div className="box-content">
+                                    <h2>Cost Structure</h2>
+                                    <div className="box-card-container"
+                                        ref={this.costStructureRef}>
+                                    </div>
+                                    <Icon name='tag'
+                                        className="box-icon" />
                                 </div>
-                                <Icon name='tag'
-                                    className="box-icon" />
                             </div>
-                        </div>
 
-                        <div className='i box'>
-                            <div className="box-content">
-                                <h2>Revenue Streams</h2>
-                                <div className="box-card-container"
-                                    ref={this.revenueStreamsRef}>
+                            <div className='i box'>
+                                <div className="box-content">
+                                    <h2>Revenue Streams</h2>
+                                    <div className="box-card-container"
+                                        ref={this.revenueStreamsRef}>
+                                    </div>
+                                    <Icon name='dollar sign'
+                                        className="box-icon" />
                                 </div>
-                                <Icon name='dollar sign'
-                                    className="box-icon" />
                             </div>
                         </div>
                     </div>
