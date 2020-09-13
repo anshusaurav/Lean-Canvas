@@ -8,7 +8,7 @@ Lean Canvas
 1. Top problem
 1. Top problem
 
-## Customer-segment
+## Customer-segments
 
 1. Target customer
 1. Target customer

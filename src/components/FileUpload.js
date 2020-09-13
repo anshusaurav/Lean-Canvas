@@ -1,6 +1,5 @@
 import React from "react";
 import Dropzone from "react-dropzone";
-import { withRouter } from 'react-router-dom'
 import { TextArea, Button, Segment, Grid, Divider } from 'semantic-ui-react'
 // import { checkFileAPI, readText } from '../utilities/FileReadUtilities'
 // for pdf files
@@ -29,8 +28,7 @@ class FileUpload extends React.Component {
     }
 
     getLeanCanvas = () => {
-        const { history } = this.props;
-        history.push('/results');
+        this.props.toggleInputProvided();
     }
     checkValidMarkdown = () => {
         const { markdown } = this.props;
@@ -84,7 +82,7 @@ class FileUpload extends React.Component {
         return (
             <div className="input-container">
                 <div>
-                    <div>
+                    <div className="input-wrapper">
                         <Segment placeholder>
                             <Grid columns={2} style={{ width: 780, height: 460 }}>
                                 <Grid.Column>
@@ -152,16 +150,17 @@ class FileUpload extends React.Component {
 
                             <Divider vertical>Or</Divider>
                         </Segment>
+                        <Button
+                            attached='bottom'
+                            content='Submit'
+                            primary
+                            positive
+                            onClick={this.handleSubmit}
+                            disabled={!isSubmitable}
+                            loading={isLoading}
+                        />
                     </div>
-                    <Button
-                        attached='bottom'
-                        content='Submit'
-                        primary
-                        positive
-                        onClick={this.handleSubmit}
-                        disabled={!isSubmitable}
-                        loading={isLoading}
-                    />
+
                 </div>
             </div>
 
@@ -169,4 +168,4 @@ class FileUpload extends React.Component {
     }
 }
 
-export default withRouter(FileUpload);
+export default FileUpload;

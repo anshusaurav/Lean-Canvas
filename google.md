@@ -7,7 +7,6 @@
 - Others
   -Gmail
   - Spam Detection
-    -Drive
   - Concurrent Operations
 - Existing Alternatives:
   - Altavista
