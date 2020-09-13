@@ -75,12 +75,8 @@ class FileUpload extends React.Component {
             }
         }
     }
-    componentDidMount() {
-        this.checkValidMarkdown();
-    }
-    componentWillUnmount() {
-        this.wrapperRef.current.classList.add('slide-right')
-    }
+
+
     render() {
         const { errorMsgFile, file, isSubmitable, isLoading } = this.state;
         const { markdown } = this.props;

@@ -130,9 +130,11 @@ table {
 }
 #root {
   height: 100%;
+  word-wrap: break-word;
 }
 .input-container {
   // display: grid;
+  animation: 1s ease-out 0s 1 animate;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -143,7 +145,7 @@ table {
     background-color: white;
   }
   .slide-right {
-    animation: 1s ease-out 0s 1 slideInFromLeft;
+    animation: 1s ease-out 0s 1 animate;
   }
   .toolbar {
     margin-left: 1px;
@@ -257,9 +259,20 @@ table {
   }
 }
 .lean-canvas {
+  animation: 1s ease-out 0s 1 animate;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  position: relative;
+  .canvas-save-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    cursor: pointer;
+    z-index: 1000;
+  }
   .previewer {
+    border-right: 2px solid rgba(0, 0, 0, 0.178);
+    padding: 1rem;
     li {
       // display: inline-flex;
       padding: 0.5rem;
@@ -278,12 +291,22 @@ table {
     }
   }
 }
-
+.canvas-wrapper {
+  // animation: 1s ease-out 0s 1 animate;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  right: 0;
+  h1 {
+    height: 48px;
+    margin-bottom: 0;
+    padding: 0.5rem;
+  }
+}
 .lean-canvas-container {
-  animation: 1s ease-out 0s 1 slideInFromLeft;
   display: grid;
   grid-gap: 1rem;
-  height: 100vh;
+  height: calc(100vh - 48px);
   width: 50vw;
   padding: 1rem;
   box-sizing: border-box;
@@ -299,6 +322,12 @@ table {
     position: relative;
     padding: 0.5rem;
     border-radius: 0.4rem;
+    .box-icon {
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      z-index: 10;
+    }
     &:after,
     &:before {
       content: "";
@@ -332,13 +361,13 @@ table {
       margin: 0.5rem;
       background-color: thistle;
       ul {
-        padding: 0.3rem;
-        margin: 0.3rem;
+        padding: 0.25rem;
+        margin: 0.25rem;
         // background-color: lightpink;
         li {
-          padding: 0.1rem;
-          margin: 0.1rem;
-          background-color: palegreen;
+          padding: 0.2rem;
+          margin: 0.2rem;
+          background-color: rgb(230, 124, 117);
         }
       }
     }
@@ -347,8 +376,8 @@ table {
   .a {
     grid-area: a;
     &:after {
-      border-right-color: rgb(81, 27, 126);
-      border-top-color: rgb(81, 27, 126);
+      border-right-color: rgb(101, 64, 131);
+      border-top-color: rgb(101, 64, 131);
     }
   }
   .b {
@@ -369,8 +398,8 @@ table {
   .d {
     grid-area: d;
     &:after {
-      border-right-color: rgb(37, 71, 122);
-      border-top-color: rgb(37, 71, 122);
+      border-right-color: rgb(89, 120, 141);
+      border-top-color: rgb(89, 120, 141);
     }
     // background-color: rgb(253, 130, 108);
   }
@@ -393,8 +422,8 @@ table {
   .g {
     grid-area: g;
     &:after {
-      border-right-color: rgb(123, 36, 126);
-      border-top-color: rgb(123, 36, 126);
+      border-right-color: rgb(133, 77, 108);
+      border-top-color: rgb(133, 77, 108);
     }
     // background-color: palegoldenrod;
   }
@@ -416,20 +445,11 @@ table {
   }
 }
 
-@keyframes slideInFromLeft {
+@keyframes animate {
   0% {
-    transform: translateX(100%);
+    opacity: 0;
   }
   100% {
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInToRight {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(-100%);
+    opacity: 1;
   }
 }

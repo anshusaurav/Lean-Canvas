@@ -4,10 +4,6 @@
 
 - Irrelevant Search Results
 - Hard to find things
-- Others
-  -Gmail
-  - Spam Detection
-  - Concurrent Operations
 - Existing Alternatives:
   - Altavista
   - Yahoo
@@ -49,7 +45,7 @@
 - Hosting
 - Development
 
-## Revenue Stream
+## Revenue Streams
 
 - Investment
 - Advertising
