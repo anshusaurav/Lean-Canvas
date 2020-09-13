@@ -49,7 +49,7 @@
 - Hosting
 - Development
 
-## Revenue Streams
+## Revenue Stream
 
 - Investment
 - Advertising

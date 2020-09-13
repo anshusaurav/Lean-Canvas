@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createRef } from "react";
 import Dropzone from "react-dropzone";
 import { TextArea, Button, Segment, Grid, Divider } from 'semantic-ui-react'
 // import { checkFileAPI, readText } from '../utilities/FileReadUtilities'
@@ -13,6 +13,7 @@ class FileUpload extends React.Component {
             isLoading: false,
             isSubmitable: false
         }
+        this.wrapperRef = createRef();
     }
 
     handleChange = (event) => {
@@ -28,6 +29,7 @@ class FileUpload extends React.Component {
     }
 
     getLeanCanvas = () => {
+        this.wrapperRef.current.classList.add('slide-right')
         this.props.toggleInputProvided();
     }
     checkValidMarkdown = () => {
@@ -76,13 +78,16 @@ class FileUpload extends React.Component {
     componentDidMount() {
         this.checkValidMarkdown();
     }
+    componentWillUnmount() {
+        this.wrapperRef.current.classList.add('slide-right')
+    }
     render() {
         const { errorMsgFile, file, isSubmitable, isLoading } = this.state;
         const { markdown } = this.props;
         return (
             <div className="input-container">
                 <div>
-                    <div className="input-wrapper">
+                    <div className="input-wrapper" ref={this.wrapperRef}>
                         <Segment placeholder>
                             <Grid columns={2} style={{ width: 780, height: 460 }}>
                                 <Grid.Column>
