@@ -73,8 +73,11 @@ class Main extends Component {
         return (
             <>
                 {
-                    isInputProvided ? (<CanvasContainer markdown={markdown} />
-                    ) : (<FileUpload markdown={markdown} onChange={this.onChange} toggleInputProvided={this.toggleInputProvided} />)
+                    isInputProvided ? (<CanvasContainer
+                        markdown={markdown} />
+                    ) : (<FileUpload markdown={markdown}
+                        onChange={this.onChange}
+                        toggleInputProvided={this.toggleInputProvided} />)
                 }
             </>
         );

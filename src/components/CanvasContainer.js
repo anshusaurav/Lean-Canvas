@@ -47,250 +47,292 @@ class CanvasContainer extends Component {
                             secondary
                             onClick={this.togglePopUp} />
                     </div>
-                    {popUpVisible && leanCanvas && <LogPopup leanCanvas={leanCanvas} togglePopUp={this.togglePopUp} />}
+                    {popUpVisible && leanCanvas && (
+                        <LogPopup leanCanvas={leanCanvas}
+                            togglePopUp={this.togglePopUp} />)}
                     <div className="canvas-wrapper"
                         ref={this.canvasWrapperRef}>
                         <h1>{leanCanvas && leanCanvas.heading} </h1>
                         {
-                            leanCanvas && leanCanvas.errors && leanCanvas.errors.length ? (<ReportError />) : (
-
-                                <div className="lean-canvas-container">
-                                    <div className='a box'>
-                                        <div className='box-content'>
-                                            <h2>Problem</h2>
-                                            <div className="box-card-container">
-                                                {
-                                                    leanCanvas &&
-                                                    leanCanvas.problem &&
-                                                    leanCanvas.problem.list &&
-                                                    leanCanvas.problem.list.map(elem => {
-                                                        return <p>{elem.trim()}</p>
-                                                    })
-
-                                                }
-                                            </div>
-                                            <div className='card-extra-container'>
-                                                <h3>Existing Alternatives</h3>
-                                                {
-                                                    leanCanvas &&
-                                                    leanCanvas.problem &&
-                                                    leanCanvas.problem.existingAlternatives &&
-                                                    leanCanvas.problem.existingAlternatives.map(elem => {
-                                                        return <p>{elem.trim()}</p>
-                                                    })
-
-                                                }
-                                            </div>
-                                            <Icon name='lock'
-                                                className="box-icon" />
-                                            <div className='box-right-traingle'>
-
-                                            </div>
-
-                                        </div>
+                            leanCanvas && leanCanvas.errors.length ? (
+                                <ReportError />) : (
+                                    <div className="lean-canvas-container">
+                                        <ProblemCard leanCanvas={leanCanvas} />
+                                        <SolutionCard leanCanvas={leanCanvas} />
+                                        <KeyMetricsCard leanCanvas={leanCanvas} />
+                                        <UniqueValuePropositionCard leanCanvas={leanCanvas} />
+                                        <UnfairAdvantageCard leanCanvas={leanCanvas} />
+                                        <ChannelsCard leanCanvas={leanCanvas} />
+                                        <CustomerSegmentsCard leanCanvas={leanCanvas} />
+                                        <CostStructureCard leanCanvas={leanCanvas} />
+                                        <RevenueStreamCard leanCanvas={leanCanvas} />
                                     </div>
-                                    <div className='b box'>
-                                        <div className='box-content'>
-                                            <h2>Solution</h2>
-                                            <div className="box-card-container">
-                                                {
-                                                    leanCanvas &&
-                                                    leanCanvas.problem &&
-                                                    leanCanvas.solution.list &&
-                                                    leanCanvas.solution.list.map(elem => {
-                                                        return <p>{elem.trim()}</p>
-                                                    })
-
-                                                }
-                                            </div>
-                                            <Icon name='key'
-                                                className="box-icon" />
-                                            <div className='box-right-traingle'>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className='c box'>
-                                        <div className="box-content">
-                                            <h2>Key Metrics</h2>
-                                            <div className="box-card-container">
-                                                {
-                                                    leanCanvas &&
-                                                    leanCanvas.keyMetrics &&
-                                                    leanCanvas.keyMetrics.list &&
-                                                    leanCanvas.keyMetrics.list.map(elem => {
-                                                        return <p>{elem.trim()}</p>
-                                                    })
-
-                                                }
-                                            </div>
-                                            <Icon name='chart bar'
-                                                className="box-icon" />
-                                            <div className='box-right-traingle'>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className='d box'>
-                                        <div className="box-content">
-                                            <h2>Unique Value Proposition</h2>
-                                            <div className="box-card-container">
-                                                {
-                                                    leanCanvas &&
-                                                    leanCanvas.uniqueValueProposition &&
-                                                    leanCanvas.uniqueValueProposition.list &&
-                                                    leanCanvas.uniqueValueProposition.list.map(elem => {
-                                                        return <p>{elem.trim()}</p>
-                                                    })
-
-                                                }
-                                            </div>
-                                            <div className='card-extra-container'>
-                                                <h3>High Level Concept</h3>
-                                                {
-                                                    leanCanvas &&
-                                                    leanCanvas.uniqueValueProposition &&
-                                                    leanCanvas.uniqueValueProposition.highLevelConcept &&
-                                                    leanCanvas.uniqueValueProposition.highLevelConcept.map(elem => {
-                                                        return <p>{elem.trim()}</p>
-                                                    })
-
-                                                }
-                                            </div>
-                                            <Icon name='gift'
-                                                className="box-icon" />
-                                            <div className='box-right-traingle'>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className='e box'>
-                                        <div className="box-content">
-                                            <h2>Unfair Advantage</h2>
-                                            <div className="box-card-container">
-                                                {
-                                                    leanCanvas &&
-                                                    leanCanvas.unfairAdvantage &&
-                                                    leanCanvas.unfairAdvantage.list &&
-                                                    leanCanvas.unfairAdvantage.list.map(elem => {
-                                                        return <p>{elem.trim()}</p>
-                                                    })
-
-                                                }
-                                            </div>
-                                            <Icon name='magic'
-                                                className="box-icon" />
-                                            <div className='box-right-traingle'>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className='f box'>
-                                        <div className="box-content">
-                                            <h2>Channels</h2>
-                                            <div className="box-card-container">
-                                                {
-                                                    leanCanvas &&
-                                                    leanCanvas.channels &&
-                                                    leanCanvas.channels.list &&
-                                                    leanCanvas.channels.list.map(elem => {
-                                                        return <p>{elem.trim()}</p>
-                                                    })
-
-                                                }
-                                            </div>
-                                            <Icon name='expand arrows alternate'
-                                                className="box-icon" />
-                                            <div className='box-right-traingle'>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className='g box'>
-                                        <div className="box-content">
-                                            <h2>Customer Segments</h2>
-                                            <div className="box-card-container">
-                                                {
-                                                    leanCanvas &&
-                                                    leanCanvas.customerSegments &&
-                                                    leanCanvas.customerSegments.list &&
-                                                    leanCanvas.customerSegments.list.map(elem => {
-                                                        return <p>{elem.trim()}</p>
-                                                    })
-
-                                                }
-                                            </div>
-                                            <div className='card-extra-container'>
-                                                <h3>Early Adopters</h3>
-                                                {
-                                                    leanCanvas &&
-                                                    leanCanvas.customerSegments &&
-                                                    leanCanvas.customerSegments.earlyAdopters &&
-                                                    leanCanvas.customerSegments.earlyAdopters.map(elem => {
-                                                        return <p>{elem.trim()}</p>
-                                                    })
-
-                                                }
-                                            </div>
-                                            <Icon name='users'
-                                                className="box-icon" />
-                                            <div className='box-right-traingle'>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className='h box'>
-                                        <div className="box-content">
-                                            <h2>Cost Structure</h2>
-                                            <div className="box-card-container">
-                                                {
-                                                    leanCanvas &&
-                                                    leanCanvas.costStructure &&
-                                                    leanCanvas.costStructure.list &&
-                                                    leanCanvas.costStructure.list.map(elem => {
-                                                        return <p>{elem.trim()}</p>
-                                                    })
-
-                                                }
-                                            </div>
-                                            <Icon name='tag'
-                                                className="box-icon" />
-                                            <div className='box-right-traingle'>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className='i box'>
-                                        <div className="box-content">
-                                            <h2>Revenue Streams</h2>
-                                            <div className="box-card-container">
-                                                {
-                                                    leanCanvas &&
-                                                    leanCanvas.revenueStreams &&
-                                                    leanCanvas.revenueStreams.list &&
-                                                    leanCanvas.revenueStreams.list.map(elem => {
-                                                        return <p>{elem.trim()}</p>
-                                                    })
-
-                                                }
-                                            </div>
-                                            <Icon name='dollar sign'
-                                                className="box-icon" />
-                                            <div className='box-right-traingle'>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            )
+                                )
                         }
-
                     </div>
                 </div>
-
             </div>
         )
     }
+}
+const ProblemCard = props => {
+    return (
+        <div className='a box'>
+            <div className='box-content'>
+                <h2>Problem</h2>
+                <div className="box-card-container">
+                    {
+                        props.leanCanvas &&
+                        props.leanCanvas.problem &&
+                        props.leanCanvas.problem.list &&
+                        props.leanCanvas.problem.list.map(elem => {
+                            return <p>{elem.trim()}</p>
+                        })
+                    }
+                </div>
+                <div className='card-extra-container'>
+                    <h3>Existing Alternatives</h3>
+                    {
+                        props.leanCanvas &&
+                        props.leanCanvas.problem &&
+                        props.leanCanvas.problem.existingAlternatives &&
+                        props.leanCanvas.problem.existingAlternatives.map(elem => {
+                            return <p>{elem.trim()}</p>
+                        })
+                    }
+                </div>
+                <Icon name='lock'
+                    className="box-icon" />
+                <div className='box-right-traingle'>
+
+                </div>
+            </div>
+        </div>
+    )
+}
+
+const SolutionCard = props => {
+    return (
+        <div className='b box' >
+            <div className='box-content'>
+                <h2>Solution</h2>
+                <div className="box-card-container">
+                    {
+                        props.leanCanvas &&
+                        props.leanCanvas.problem &&
+                        props.leanCanvas.solution.list &&
+                        props.leanCanvas.solution.list.map(elem => {
+                            return <p>{elem.trim()}</p>
+                        })
+
+                    }
+                </div>
+                <Icon name='key'
+                    className="box-icon" />
+                <div className='box-right-traingle'>
+
+                </div>
+            </div>
+        </div >
+    )
+}
+const KeyMetricsCard = props => {
+    return (
+        <div className='c box'>
+            <div className="box-content">
+                <h2>Key Metrics</h2>
+                <div className="box-card-container">
+                    {
+                        props.leanCanvas &&
+                        props.leanCanvas.keyMetrics &&
+                        props.leanCanvas.keyMetrics.list &&
+                        props.leanCanvas.keyMetrics.list.map(elem => {
+                            return <p>{elem.trim()}</p>
+                        })
+
+                    }
+                </div>
+                <Icon name='chart bar'
+                    className="box-icon" />
+                <div className='box-right-traingle'>
+
+                </div>
+            </div>
+        </div>
+    )
+}
+const UniqueValuePropositionCard = props => {
+    return (
+        <div className='d box'>
+            <div className="box-content">
+                <h2>Unique Value Proposition</h2>
+                <div className="box-card-container">
+                    {
+                        props.leanCanvas &&
+                        props.leanCanvas.uniqueValueProposition &&
+                        props.leanCanvas.uniqueValueProposition.list &&
+                        props.leanCanvas.uniqueValueProposition.list.map(elem => {
+                            return <p>{elem.trim()}</p>
+                        })
+
+                    }
+                </div>
+                <div className='card-extra-container'>
+                    <h3>High Level Concept</h3>
+                    {
+                        props.leanCanvas &&
+                        props.leanCanvas.uniqueValueProposition &&
+                        props.leanCanvas.uniqueValueProposition.highLevelConcept &&
+                        props.leanCanvas.uniqueValueProposition.highLevelConcept.map(elem => {
+                            return <p>{elem.trim()}</p>
+                        })
+
+                    }
+                </div>
+                <Icon name='gift'
+                    className="box-icon" />
+                <div className='box-right-traingle'>
+
+                </div>
+            </div>
+        </div>
+    )
+}
+const UnfairAdvantageCard = props => {
+    return (
+        <div className='e box'>
+            <div className="box-content">
+                <h2>Unfair Advantage</h2>
+                <div className="box-card-container">
+                    {
+                        props.leanCanvas &&
+                        props.leanCanvas.unfairAdvantage &&
+                        props.leanCanvas.unfairAdvantage.list &&
+                        props.leanCanvas.unfairAdvantage.list.map(elem => {
+                            return <p>{elem.trim()}</p>
+                        })
+
+                    }
+                </div>
+                <Icon name='magic'
+                    className="box-icon" />
+                <div className='box-right-traingle'>
+
+                </div>
+            </div>
+        </div>
+    )
+}
+const ChannelsCard = props => {
+    return (
+        <div className='f box'>
+            <div className="box-content">
+                <h2>Channels</h2>
+                <div className="box-card-container">
+                    {
+                        props.leanCanvas &&
+                        props.leanCanvas.channels &&
+                        props.leanCanvas.channels.list &&
+                        props.leanCanvas.channels.list.map(elem => {
+                            return <p>{elem.trim()}</p>
+                        })
+
+                    }
+                </div>
+                <Icon name='expand arrows alternate'
+                    className="box-icon" />
+                <div className='box-right-traingle'>
+
+                </div>
+            </div>
+        </div>
+    )
+}
+const CustomerSegmentsCard = props => {
+    return (
+        <div className='g box'>
+            <div className="box-content">
+                <h2>Customer Segments</h2>
+                <div className="box-card-container">
+                    {
+                        props.leanCanvas &&
+                        props.leanCanvas.customerSegments &&
+                        props.leanCanvas.customerSegments.list &&
+                        props.leanCanvas.customerSegments.list.map(elem => {
+                            return <p>{elem.trim()}</p>
+                        })
+
+                    }
+                </div>
+                <div className='card-extra-container'>
+                    <h3>Early Adopters</h3>
+                    {
+                        props.leanCanvas &&
+                        props.leanCanvas.customerSegments &&
+                        props.leanCanvas.customerSegments.earlyAdopters &&
+                        props.leanCanvas.customerSegments.earlyAdopters.map(elem => {
+                            return <p>{elem.trim()}</p>
+                        })
+
+                    }
+                </div>
+                <Icon name='users'
+                    className="box-icon" />
+                <div className='box-right-traingle'>
+
+                </div>
+            </div>
+        </div>
+    )
+}
+const CostStructureCard = props => {
+    return (
+        <div className='h box'>
+            <div className="box-content">
+                <h2>Cost Structure</h2>
+                <div className="box-card-container">
+                    {
+                        props.leanCanvas &&
+                        props.leanCanvas.costStructure &&
+                        props.leanCanvas.costStructure.list &&
+                        props.leanCanvas.costStructure.list.map(elem => {
+                            return <p>{elem.trim()}</p>
+                        })
+
+                    }
+                </div>
+                <Icon name='tag'
+                    className="box-icon" />
+                <div className='box-right-traingle'>
+
+                </div>
+            </div>
+        </div>
+    )
+}
+const RevenueStreamCard = props => {
+    return (
+        <div className='i box'>
+            <div className="box-content">
+                <h2>Revenue Streams</h2>
+                <div className="box-card-container">
+                    {
+                        props.leanCanvas &&
+                        props.leanCanvas.revenueStreams &&
+                        props.leanCanvas.revenueStreams.list &&
+                        props.leanCanvas.revenueStreams.list.map(elem => {
+                            return <p>{elem.trim()}</p>
+                        })
+
+                    }
+                </div>
+                <Icon name='dollar sign'
+                    className="box-icon" />
+                <div className='box-right-traingle'>
+
+                </div>
+            </div>
+        </div>
+    )
 }
 export default CanvasContainer;
