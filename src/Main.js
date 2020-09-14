@@ -18,8 +18,8 @@ class Main extends Component {
     }
     componentDidMount() {
         this.setState({
-            markdown: `
-            # Airbnb
+            markdown:
+                `# Airbnb
 
 ## Problem
   - Hard to find cheap/affordable accomodation options when travelling
