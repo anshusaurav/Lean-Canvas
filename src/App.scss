@@ -148,15 +148,11 @@ table {
     animation: 1s ease-out 0s 1 animate;
   }
   .toolbar {
-    margin-left: 1px;
-    margin-right: 1px;
     padding: 0.5rem;
     background: #3dadf2;
-    width: 360px;
-    // font-family: "Lora", serif;
+    min-width: 100% !important;
     font-size: 1.2em;
     font-weight: 600;
-    // padding: 7px 15px;
     border-style: solid;
     border-width: 1px;
     border-bottom-width: 0px;
@@ -168,7 +164,7 @@ table {
     border-style: solid;
     resize: none;
     height: 380px;
-    min-width: 360px;
+    min-width: 100% !important;
     margin-bottom: 16px;
     border-radius: 0px 0px 10px 10px;
     &:placeholder {
@@ -270,13 +266,17 @@ table {
     border: 2px solid #325bcd;
     background-color: rgb(255, 255, 255);
   }
-  .canvas-save-btn {
+  .canvas-control {
     position: absolute;
     top: 8px;
     right: 8px;
-    cursor: pointer;
+    // cursor: pointer;
     z-index: 1000;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0.5rem;
   }
+
   .previewer {
     border-right: 2px solid rgba(0, 0, 0, 0.178);
     padding: 1rem;
@@ -285,7 +285,8 @@ table {
       padding: 0.5rem;
       margin: 0.5rem;
       background-color: lightblue;
-      ul {
+      ul,
+      ol {
         padding: 0.3rem;
         margin: 0.3rem;
         // background-color: lightpink;
@@ -305,7 +306,7 @@ table {
   top: 0;
   right: 0;
   h1 {
-    font-size: 24px;
+    font-size: 28px;
     font-weight: 700;
     height: 48px;
     margin-bottom: 0;
@@ -338,30 +339,31 @@ table {
       right: 2px;
       z-index: 10;
     }
-    &:after,
-    &:before {
-      content: "";
-      position: absolute;
-      top: 0;
-      right: 0;
-      border-color: transparent;
-      border-style: solid;
-    }
-    &:before {
-      border-width: 1.5em;
-    }
-    &:after {
-      border-radius: 0.4rem;
-      border-width: 1.5rem;
-      border-right-color: #0c0;
-      border-top-color: #0c0;
-    }
+    // &:after,
+    // &:before {
+    //   content: "";
+    //   position: absolute;
+    //   top: 0;
+    //   right: 0;
+    //   border-color: transparent;
+    //   border-style: solid;
+    // }
+    // &:before {
+    //   border-width: 1.5em;
+    // }
+    // &:after {
+    //   border-radius: 0.4rem;
+    //   border-width: 1.5rem;
+    //   border-right-color: #0c0;
+    //   border-top-color: #0c0;
+    // }
     h2 {
       z-index: 10;
       font-size: 18px;
       font-weight: 600;
       letter-spacing: 0.5px;
       text-transform: uppercase;
+      padding-right: 1rem;
     }
     .box-card-container {
       list-style: none;
@@ -371,7 +373,8 @@ table {
       padding: 0.5rem;
       margin: 0.5rem;
       background-color: thistle;
-      ul {
+      ul,
+      ol {
         padding: 0.25rem;
         margin: 0.25rem;
         // background-color: lightpink;

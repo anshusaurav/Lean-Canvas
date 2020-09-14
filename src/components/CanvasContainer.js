@@ -32,17 +32,23 @@ class CanvasContainer extends Component {
         this.revenueStreamsRef = createRef();
         this.canvasHeadingRef = createRef();
         this.canvasWrapperRef = createRef();
+        this.existingAlternativesRef = createRef();
+        // this.
 
     }
     parseHTML = () => {
         const virtualElem = document.createElement('div');
         virtualElem.innerHTML = marked(this.props.markdown);
-        console.log(virtualElem.innerHTML);
+        // console.log(virtualElem.innerHTML);
         const elemHeading = virtualElem.querySelector('h1');
         this.canvasHeadingRef.current.innerHTML = elemHeading.innerHTML;
 
         const elemProblem = virtualElem.querySelector('#problem + *') ||
             virtualElem.querySelector('#problem + *');
+        const upperCaseProblem = elemProblem.innerHTML.toUpperCase();
+
+        const pos = upperCaseProblem.indexOf('<LI>EXISTING ALTERNATIVES')
+        console.log(elemProblem.innerHTML.slice(0, pos));
         this.problemRef.current.innerHTML = elemProblem.innerHTML;
 
         const elemSolution = virtualElem.querySelector('#solution + *') ||
@@ -83,7 +89,10 @@ class CanvasContainer extends Component {
 
     componentDidMount() {
         console.log('here');
+
         console.log(parse(this.props.markdown))
+        const jsonraw = marked.lexer(this.props.markdown);
+        console.log(jsonraw);
         this.parseHTML();
     }
 
@@ -91,11 +100,18 @@ class CanvasContainer extends Component {
         return (
             <div className='lean-canvas'>
                 <div className="canvas-main">
-                    <Button icon='save'
-                        content='Export as PNG'
-                        className="canvas-save-btn"
-                        onClick={this.exportAsPng} />
-
+                    <div className="canvas-control">
+                        <Button icon='save'
+                            content='Export as PNG'
+                            className="canvas-save-btn"
+                            primary
+                            onClick={this.exportAsPng} />
+                        <Button icon='bug'
+                            content='View Log'
+                            className="canvas-save-btn"
+                            secondary
+                            onClick={this.exportAsPng} />
+                    </div>
                     <div className="canvas-wrapper"
                         ref={this.canvasWrapperRef}>
                         <h1 ref={this.canvasHeadingRef}> </h1>
@@ -107,8 +123,12 @@ class CanvasContainer extends Component {
                                     <div className="box-card-container"
                                         ref={this.problemRef} >
                                     </div>
+                                    <div className='card-extra-container'
+                                        ref={this.existingAlternativesRef}>
+                                    </div>
                                     <Icon name='lock'
                                         className="box-icon" />
+
                                 </div>
                             </div>
                             <div className='b box'>
@@ -123,7 +143,7 @@ class CanvasContainer extends Component {
                             </div>
                             <div className='c box'>
                                 <div className="box-content">
-                                    <h2>Key Matrics</h2>
+                                    <h2>Key Metrics</h2>
                                     <div className="box-card-container"
                                         ref={this.keyMetricsRef}>
                                     </div>
