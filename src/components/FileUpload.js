@@ -150,6 +150,7 @@ class FileUpload extends React.Component {
                                             </p>)
                                         }
                                     </div>
+                                    <a href="https://gist.githubusercontent.com/anshusaurav/5d51cef5ac03eee17317d3aac56f35a5/raw/0145281a7b5779d3e9ec396a9c84b19a30ece608/airbnb.md">Sample markdown available here </a>
 
                                 </Grid.Column>
                             </Grid>
