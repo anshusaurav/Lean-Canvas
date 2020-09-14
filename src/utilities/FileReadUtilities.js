@@ -37,7 +37,7 @@ export const process = (arr) => {
 
                 let altElems = arr[tmp + 1].items.filter(listItem => listItem.text.toLowerCase().indexOf('existing alternative') >= 0);
                 if (altElems.length !== 0 && altElems[0].tokens && altElems[0].tokens.length > 1) {
-                    problem.exisitingAlternatives = altElems[0].tokens[1].items.map(e => e.text);
+                    problem.existingAlternatives = altElems[0].tokens[1].items.map(e => e.text);
 
                 }
                 else {
