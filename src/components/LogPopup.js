@@ -10,28 +10,28 @@ class LogPopup extends Component {
                     !leanCanvas.errors.length && !leanCanvas.warnings.length &&
                     <p className="info">
                         Successfully parsed without error or warning.
-                </p>
+                    </p>
                 }
                 {
                     !leanCanvas.errors.length && leanCanvas.warnings.length &&
                     <p className="warn">
                         Parsed with warnings {leanCanvas.warnings.length} warnings.
-                </p>
+                    </p>
 
                 }
                 {
                     leanCanvas.errors.length.length && !leanCanvas.warnings.length &&
                     <p className="error">
                         Error while parsing. {leanCanvas.errors.length} errors.
-                </p>
+                    </p>
 
                 }
                 {
                     leanCanvas.errors.length && leanCanvas.warnings.length &&
                     <p className="error">
                         Error while parsing. {leanCanvas.errors.length} errors
-                and {leanCanvas.warnings.length} warnings.
-                </p>
+                    and {leanCanvas.warnings.length} warnings.
+                    </p>
 
                 }
                 {

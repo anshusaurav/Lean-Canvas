@@ -1,7 +1,5 @@
 # Google
 
-## Problem
-
 ## Solution
 
 - Develop a technology that allows users to find relevant content
