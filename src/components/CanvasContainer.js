@@ -3,9 +3,10 @@ import marked from "marked";
 import { Icon, Button } from 'semantic-ui-react'
 import { parse } from 'md-2-json'
 import { exportComponentAsJPEG } from "react-component-export-image";
-marked.setOptions({
-    breaks: true
-});
+import { process } from './../utilities/FileReadUtilities'
+// marked.setOptions({
+//     breaks: true
+// });
 class CanvasContainer extends Component {
     constructor(props) {
         super(props);
@@ -93,6 +94,7 @@ class CanvasContainer extends Component {
         console.log(parse(this.props.markdown))
         const jsonraw = marked.lexer(this.props.markdown);
         console.log(jsonraw);
+        console.log(process(jsonraw))
         this.parseHTML();
     }
 

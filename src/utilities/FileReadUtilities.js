@@ -33,3 +33,38 @@ export const htmlDecode = (s) => {
     el.innerHTML = s;
     return el.innerText || el.textContent;
 }
+
+export const process = (arr) => {
+
+    const res = {};
+    const errors = [];
+    const warnings = [];
+    if (arr[0].type === 'heading' && arr[0].raw.startsWith('# '))
+        res.heading = arr[0].text;
+    else {
+        warnings.push(`h1/Main heading for lean canvas not found`);
+    }
+    let tmp = arr.findIndex(obj => {
+        return obj.type === 'heading' && obj.text.toLowerCase() === 'problem';
+    })
+    if (tmp === -1) {
+        errors.push(`h2/Problem heading for lean canvas not found`);
+    }
+    else {
+        if (tmp + 1 < arr.length && arr[tmp + 1].type !== 'list') {
+            warnings.push('No content found for problem');
+        }
+        else {
+
+        }
+    }
+    // if (tmp)
+    //     res.heading = arr[0].text;
+    // else {
+    //     warnings.push(`h1/Main heading for lean canvas not found`);
+    // }
+    res.warnings = warnings;
+    res.errors = errors;
+
+    return res;
+}
