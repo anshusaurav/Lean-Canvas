@@ -2,6 +2,7 @@
    v2.0 | 20110126
    License: none (public domain)
 */
+@import url("https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@300;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700&display=swap");
 html,
 body,
@@ -274,7 +275,40 @@ table {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 0.5rem;
   }
-
+  .log-wrapper {
+    // font-family: "Overpass Mono", monospace;
+    font: 11pt/1.25 "Overpass Mono", monospace;
+    z-index: 100;
+    min-height: 180px;
+    background-color: rgb(78, 78, 78);
+    position: absolute;
+    top: 20%;
+    left: calc(50% - 248px);
+    width: 496px;
+    .log-wrapper-content {
+      position: relative;
+      .close-btn {
+        background-color: white;
+        opacity: 1;
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        cursor: pointer;
+      }
+    }
+    .debug {
+      color: Snow;
+    }
+    .info {
+      color: LawnGreen;
+    }
+    .warn {
+      color: GoldenRod;
+    }
+    .error {
+      color: LightCoral;
+    }
+  }
   .previewer {
     border-right: 2px solid rgba(0, 0, 0, 0.178);
     padding: 1rem;
@@ -462,11 +496,42 @@ table {
   }
 }
 
+.error-container {
+  display: flex;
+  // grid-gap: 1rem;
+  height: calc(100vh - 64px);
+  width: 70vw;
+  padding: 1rem;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  place-content: center;
+  text-align: center;
+  background: black;
+  color: white;
+  path {
+    animation: rotate 1s infinite;
+  }
+
+  path:nth-of-type(2) {
+    animation-delay: 0.2s;
+  }
+}
 @keyframes animate {
   0% {
     opacity: 0;
   }
   100% {
     opacity: 1;
+  }
+}
+@keyframes rotate {
+  from {
+    stroke-dasharray: 5;
+    stroke-dashoffset: 7.3;
+  }
+  to {
+    stroke-dasharray: 5;
+    stroke-dashoffset: 17.3;
   }
 }
