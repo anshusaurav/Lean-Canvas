@@ -10,14 +10,13 @@ class FileUpload extends React.Component {
             // markdown: "",
             errorMsgFile: null,
             isLoading: false,
-            isSubmitable: false
         }
         this.wrapperRef = createRef();
     }
 
     handleChange = (event) => {
         this.props.onChange(event.target.value);
-        this.checkValidMarkdown();
+
     }
     handleSubmit = (event) => {
         event.preventDefault();
@@ -29,14 +28,7 @@ class FileUpload extends React.Component {
         this.wrapperRef.current.classList.add('slide-right')
         this.props.toggleInputProvided();
     }
-    checkValidMarkdown = () => {
-        const { markdown } = this.props;
-        if (markdown.length <= 0) {
-            this.setState({ isSubmitable: false })
-        }
-        else
-            this.setState({ isSubmitable: true })
-    }
+
     handleDrop = (acceptedFiles) => {
         if (acceptedFiles.length > 1) {
             this.setState({ errorMsgFile: 'Please select one file' })
@@ -74,8 +66,9 @@ class FileUpload extends React.Component {
     }
 
 
+
     render() {
-        const { errorMsgFile, file, isSubmitable, isLoading } = this.state;
+        const { errorMsgFile, file, isLoading } = this.state;
         const { markdown } = this.props;
         return (
             <div className="input-container">
@@ -163,7 +156,6 @@ class FileUpload extends React.Component {
                             primary
                             positive
                             onClick={this.handleSubmit}
-                            disabled={!isSubmitable}
                             loading={isLoading}
                         />
                     </div>

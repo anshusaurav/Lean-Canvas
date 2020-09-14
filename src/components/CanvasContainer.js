@@ -1,7 +1,7 @@
 import React, { Component, createRef } from 'react'
 import marked from "marked";
 import { Icon, Button } from 'semantic-ui-react'
-import { exportComponentAsJPEG } from "react-component-export-image";
+import { exportComponentAsPNG } from "react-component-export-image";
 import { process } from './../utilities/FileReadUtilities'
 import LogPopup from './LogPopup';
 import ReportError from './ReportError'
@@ -21,7 +21,7 @@ class CanvasContainer extends Component {
         this.setState({ leanCanvas: process(jsonraw) })
     }
     exportAsPng = () => {
-        exportComponentAsJPEG(this.canvasWrapperRef)
+        exportComponentAsPNG(this.canvasWrapperRef, 'Lean Canvas')
     }
     togglePopUp = () => {
         this.setState({ popUpVisible: !this.state.popUpVisible })
