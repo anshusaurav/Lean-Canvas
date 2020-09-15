@@ -15,7 +15,7 @@ export const process = (arr) => {
     const costStructure = {};
     const revenueStreams = {};
 
-    if (arr[0].type === 'heading' && arr[0].raw.startsWith('# '))
+    if (arr.length > 0 && arr[0].type === 'heading' && arr[0].raw && arr[0].raw.startsWith('# '))
         res.heading = arr[0].text;
     else {
         warnings.push(`h1/Main heading for lean canvas not found`);
@@ -23,7 +23,7 @@ export const process = (arr) => {
 
     function fetchProblemData() {
         let tmp = arr.findIndex(obj => {
-            return obj.type === 'heading' && obj.text.toLowerCase() === 'problem';
+            return obj.type === 'heading' && obj.text.toLowerCase().includes('problem');
         })
         if (tmp === -1) {
             errors.push(`h2/Problem heading for lean canvas not found`);
@@ -33,11 +33,14 @@ export const process = (arr) => {
                 warnings.push('No content found for problem');
             }
             else {
-                problem.list = arr[tmp + 1].items.filter(listItem => listItem.text.toLowerCase().indexOf('existing alternative') < 0).map(elem => elem.text);
+                problem.list = arr[tmp + 1].items.filter(listItem => !listItem.text.toLowerCase().includes('existing alternative')).map(elem => elem.text);
 
-                let altElems = arr[tmp + 1].items.filter(listItem => listItem.text.toLowerCase().indexOf('existing alternative') >= 0);
+                let altElems = arr[tmp + 1].items.filter(listItem => listItem.text.toLowerCase().includes('existing alternative'));
                 if (altElems.length !== 0 && altElems[0].tokens && altElems[0].tokens.length > 1) {
-                    problem.existingAlternatives = altElems[0].tokens[1].items.map(e => e.text);
+                    if (altElems[0].tokens[1].items && altElems[0].tokens[1].items.length > 0)
+                        problem.existingAlternatives = altElems[0].tokens[1].items.map(e => e.text);
+                    else
+                        warnings.push('No list existing alternatives found.')
 
                 }
                 else {
@@ -49,7 +52,7 @@ export const process = (arr) => {
 
     function fetchSolutionData() {
         let tmp = arr.findIndex(obj => {
-            return obj.type === 'heading' && obj.text.toLowerCase() === 'solution';
+            return obj.type === 'heading' && obj.text.toLowerCase().includes('solution');
         })
         if (tmp === -1) {
             errors.push('h2/Solution heading for lean canvas not found');
@@ -66,7 +69,7 @@ export const process = (arr) => {
 
     function fetchKeyMetricsData() {
         let tmp = arr.findIndex(obj => {
-            return obj.type === 'heading' && obj.text.toLowerCase() === 'key metrics';
+            return obj.type === 'heading' && obj.text.toLowerCase().includes('key metric');
         })
         if (tmp === -1) {
             errors.push('h2/Key Metrics heading for lean canvas not found');
@@ -82,7 +85,7 @@ export const process = (arr) => {
     }
     function fetchUniqueValuePropositionData() {
         let tmp = arr.findIndex(obj => {
-            return obj.type === 'heading' && obj.text.toLowerCase() === 'unique value proposition';
+            return obj.type === 'heading' && obj.text.toLowerCase().includes('unique value proposition');
         })
         if (tmp === -1) {
             errors.push('h2/Unique Value Proposition heading for lean canvas not found');
@@ -92,9 +95,9 @@ export const process = (arr) => {
                 warnings.push('No content found for unique value proposition');
             }
             else {
-                uniqueValueProposition.list = arr[tmp + 1].items.filter(listItem => listItem.text.toLowerCase().indexOf('high level concept') < 0).map(elem => elem.text);
+                uniqueValueProposition.list = arr[tmp + 1].items.filter(listItem => !listItem.text.toLowerCase().includes('high level concept')).map(elem => elem.text);
 
-                let altElems = arr[tmp + 1].items.filter(listItem => listItem.text.toLowerCase().indexOf('high level concept') >= 0);
+                let altElems = arr[tmp + 1].items.filter(listItem => listItem.text.toLowerCase().includes('high level concept'));
                 if (altElems.length !== 0 && altElems[0].tokens && altElems[0].tokens.length > 1) {
                     uniqueValueProposition.highLevelConcept = altElems[0].tokens[1].items.map(e => e.text);
 
@@ -107,7 +110,7 @@ export const process = (arr) => {
     }
     function fetchUnfairAdvantageData() {
         let tmp = arr.findIndex(obj => {
-            return obj.type === 'heading' && obj.text.toLowerCase() === 'unfair advantage';
+            return obj.type === 'heading' && obj.text.toLowerCase().includes('unfair advantage');
         })
         if (tmp === -1) {
             errors.push('h2/Unfair Advantage heading for lean canvas not found');
@@ -124,7 +127,7 @@ export const process = (arr) => {
 
     function fetchChannelsData() {
         let tmp = arr.findIndex(obj => {
-            return obj.type === 'heading' && obj.text.toLowerCase() === 'channels';
+            return obj.type === 'heading' && obj.text.toLowerCase().includes('channel');
         })
         if (tmp === -1) {
             errors.push('h2/Channels heading for lean canvas not found');
@@ -141,7 +144,7 @@ export const process = (arr) => {
 
     function fetchCustomerSegmentsData() {
         let tmp = arr.findIndex(obj => {
-            return obj.type === 'heading' && obj.text.toLowerCase() === 'customer segments';
+            return obj.type === 'heading' && obj.text.toLowerCase().includes('customer segment');
         })
         if (tmp === -1) {
             errors.push('h2/Customer segments heading for lean canvas not found');
@@ -151,9 +154,9 @@ export const process = (arr) => {
                 warnings.push('No content found for Customer segments');
             }
             else {
-                customerSegments.list = arr[tmp + 1].items.filter(listItem => listItem.text.toLowerCase().indexOf('early adopters') < 0).map(elem => elem.text);
+                customerSegments.list = arr[tmp + 1].items.filter(listItem => !listItem.text.toLowerCase().includes('early adopter')).map(elem => elem.text);
 
-                let altElems = arr[tmp + 1].items.filter(listItem => listItem.text.toLowerCase().indexOf('early adopters') >= 0);
+                let altElems = arr[tmp + 1].items.filter(listItem => listItem.text.toLowerCase().includes('early adopter'));
                 if (altElems.length !== 0 && altElems[0].tokens && altElems[0].tokens.length > 1) {
                     customerSegments.earlyAdopters = altElems[0].tokens[1].items.map(e => e.text);
 
@@ -166,7 +169,7 @@ export const process = (arr) => {
     }
     function fetchCostStructureData() {
         let tmp = arr.findIndex(obj => {
-            return obj.type === 'heading' && obj.text.toLowerCase() === 'cost structure';
+            return obj.type === 'heading' && obj.text.toLowerCase().includes('cost structure');
         })
         if (tmp === -1) {
             errors.push('h2/Cost structure heading for lean canvas not found');
@@ -182,7 +185,7 @@ export const process = (arr) => {
     }
     function fetchRevenueStreamsData() {
         let tmp = arr.findIndex(obj => {
-            return obj.type === 'heading' && obj.text.toLowerCase() === 'revenue streams';
+            return obj.type === 'heading' && obj.text.toLowerCase().includes('revenue stream');
         })
         if (tmp === -1) {
             errors.push('h2/Revenue streams heading for lean canvas not found');

@@ -25,7 +25,7 @@ class CanvasContainer extends Component {
     }
     parseMarkdown = () => {
         const jsonraw = marked.lexer(this.props.markdown);
-        console.log(jsonraw);
+        // console.log(jsonraw);
         this.setState({ leanCanvas: process(jsonraw) })
     }
     exportAsPng = () => {

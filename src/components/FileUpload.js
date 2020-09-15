@@ -140,6 +140,7 @@ class FileUpload extends Component {
                         <Button
                             attached='bottom'
                             content='Submit'
+                            large
                             primary
                             onClick={this.handleSubmit}
                             loading={isLoading}
