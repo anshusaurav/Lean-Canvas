@@ -4,6 +4,8 @@ Empower developers to generate a Lean Canvas for their business by creating a De
 
 Create a web interface that can accept the content for a Lean Canvas as Markdown and generate a lean canvas from it.
 
+Sample markdown file will be loaded on textarea initially. Additionally md file is available at [Airbnb markdown for lean canvas](https://gist.githubusercontent.com/anshusaurav/5d51cef5ac03eee17317d3aac56f35a5/raw/0145281a7b5779d3e9ec396a9c84b19a30ece608/airbnb.md).
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
