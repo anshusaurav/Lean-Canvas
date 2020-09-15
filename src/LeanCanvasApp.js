@@ -7,7 +7,7 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      markdown: '',
+      markdown: placeholder,
       isInputProvided: false,
     }
   }
@@ -17,10 +17,24 @@ class Main extends Component {
   toggleInputProvided = () => {
     this.setState({ isInputProvided: !this.state.isInputProvided })
   }
-  componentDidMount() {
-    this.setState({
-      markdown:
-        `# Airbnb
+
+  render() {
+    const { markdown, isInputProvided } = this.state;
+    return (
+      <>
+        {
+          isInputProvided ? (<CanvasContainer
+            markdown={markdown}
+            toggleInputProvided={this.toggleInputProvided} />
+          ) : (<FileUpload markdown={markdown}
+            onChange={this.onChange}
+            toggleInputProvided={this.toggleInputProvided} />)
+        }
+      </>
+    );
+  }
+}
+const placeholder = `# Airbnb
 
 ## Problem
   - Hard to find cheap/affordable accomodation options when travelling
@@ -67,24 +81,7 @@ class Main extends Component {
   - Insurance
       
 ## Revenue Streams
-  - Fees for travellers`})
-  }
-  render() {
-    const { markdown, isInputProvided } = this.state;
-    return (
-      <>
-        {
-          isInputProvided ? (<CanvasContainer
-            markdown={markdown}
-            toggleInputProvided={this.toggleInputProvided} />
-          ) : (<FileUpload markdown={markdown}
-            onChange={this.onChange}
-            toggleInputProvided={this.toggleInputProvided} />)
-        }
-      </>
-    );
-  }
-}
+  - Fees for travellers`
 export default Main
 
 
