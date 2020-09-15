@@ -11,7 +11,7 @@ export const UnfairAdvantageCard = props => {
                         props.leanCanvas.unfairAdvantage &&
                         props.leanCanvas.unfairAdvantage.list &&
                         props.leanCanvas.unfairAdvantage.list.map((elem, index) => {
-                            return <p key={index}>{elem.trim()}</p>
+                            return <p key={index}><span>- </span>{elem.trim()}</p>
                         })
                     }
                 </div>

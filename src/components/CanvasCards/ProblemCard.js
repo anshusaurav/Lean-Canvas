@@ -11,7 +11,7 @@ export const ProblemCard = props => {
                         props.leanCanvas.problem &&
                         props.leanCanvas.problem.list &&
                         props.leanCanvas.problem.list.map((elem, index) => {
-                            return <p key={index}>{elem.trim()}</p>
+                            return <p key={index}> <span>- </span> {elem.trim()}</p>
                         })
                     }
                 </div>
@@ -22,7 +22,7 @@ export const ProblemCard = props => {
                         props.leanCanvas.problem &&
                         props.leanCanvas.problem.existingAlternatives &&
                         props.leanCanvas.problem.existingAlternatives.map((elem, index) => {
-                            return <p key={index}>{elem.trim()}</p>
+                            return <p key={index}> <span>- </span> {elem.trim()}</p>
                         })
                     }
                 </div>

@@ -11,7 +11,7 @@ export const RevenueStreamCard = props => {
                         props.leanCanvas.revenueStreams &&
                         props.leanCanvas.revenueStreams.list &&
                         props.leanCanvas.revenueStreams.list.map((elem, index) => {
-                            return <p key={index}>{elem.trim()}</p>
+                            return <p key={index}><span>- </span>{elem.trim()}</p>
                         })
                     }
                 </div>

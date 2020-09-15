@@ -11,7 +11,7 @@ export const ChannelsCard = props => {
                         props.leanCanvas.channels &&
                         props.leanCanvas.channels.list &&
                         props.leanCanvas.channels.list.map((elem, index) => {
-                            return <p key={index}>{elem.trim()}</p>
+                            return <p key={index}><span>- </span>{elem.trim()}</p>
                         })
                     }
                 </div>
