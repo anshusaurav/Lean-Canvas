@@ -262,6 +262,7 @@ table {
     vertical-align: center;
     height: 408px;
     position: relative;
+    margin-bottom: 1rem;
   }
   .file-preview {
     position: absolute;
@@ -337,7 +338,7 @@ table {
     position: relative;
     border-radius: 8px;
     border: 2px solid #325bcd;
-    background-color: rgb(255, 255, 255);
+    background-color: #f7f7f7;
   }
   .canvas-control {
     position: absolute;
@@ -418,6 +419,7 @@ table {
 }
 .lean-canvas-container {
   display: grid;
+
   grid-gap: 1rem;
   height: calc(100vh - 64px);
   width: 70vw;
@@ -430,12 +432,16 @@ table {
   grid-template-rows: repeat(3, 1fr);
   grid-template-columns: repeat(10, 1fr);
   .box {
-    background-color: #d6d6d6;
-    box-shadow: 6px 5px 4px 2px rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+    box-shadow: 0 1px 2px #ccc;
+    // box-shadow: 6px 5px 4px 2px rgba(0, 0, 0, 0.3);
     position: relative;
     padding: 0.5rem;
     border-radius: 0.4rem;
     overflow-y: auto;
+    &:hover {
+      box-shadow: 0 2px 8px #bbb;
+    }
     .box-icon {
       position: absolute;
       top: 2px;

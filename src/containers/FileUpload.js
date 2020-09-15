@@ -81,7 +81,7 @@ class FileUpload extends Component {
 
                                 {
                                     editorMode ? (
-                                        <>
+                                        <React.Fragment>
                                             <div className="toolbar">
                                                 Editor
                                             </div>
@@ -91,10 +91,10 @@ class FileUpload extends Component {
                                                 placeholder='Enter markdown content here'
                                                 value={markdown}
                                                 onChange={this.handleChange} />
-                                        </>
+                                        </React.Fragment>
 
                                     ) : (
-                                            <>
+                                            <React.Fragment>
                                                 <div className="toolbar">
                                                     Preview
                                                 </div>
@@ -102,22 +102,23 @@ class FileUpload extends Component {
                                                     <Markdown source={markdown} />
                                                 </div>
 
-                                            </>
+                                            </React.Fragment>
                                         )
                                 }
                             </div>
                             <div className="input-drag-drop">
                                 <FileDropZone handleDrop={this.handleDrop} file={file} />
-                                {
-                                    errorMsgFile && (<p className='file-error-msg'>
-                                        {errorMsgFile}
-                                    </p>)
-                                }
+
                                 <a href="https://gist.githubusercontent.com/anshusaurav/5d51cef5ac03eee17317d3aac56f35a5/raw/0145281a7b5779d3e9ec396a9c84b19a30ece608/airbnb.md"
                                     target="_blank"
                                     rel="noopener noreferrer">
                                     Sample markdown available here
                                 </a>
+                                {
+                                    errorMsgFile && (<p className='file-error-msg'>
+                                        {errorMsgFile}
+                                    </p>)
+                                }
                             </div>
                         </div>
                         <Divider vertical>Or</Divider>
