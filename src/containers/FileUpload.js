@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { FileDropZone } from "./Input/FileDropzone";
+import { FileDropZone } from "./../components/Input/FileDropzone"
 import { TextArea, Button, Divider } from 'semantic-ui-react'
 
 class FileUpload extends Component {

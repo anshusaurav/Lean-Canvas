@@ -2,18 +2,18 @@ import React, { Component, createRef } from 'react'
 import marked from "marked";
 import { Button } from 'semantic-ui-react'
 import { exportComponentAsPNG } from "react-component-export-image";
-import { process } from './../utilities/FileReadUtilities'
+import { process } from '../utilities/FileReadUtilities'
 import LogPopup from './LogPopup';
 import ReportError from './ReportError'
-import { ProblemCard } from './CanvasCards/ProblemCard'
-import { SolutionCard } from './CanvasCards/SolutionCard'
-import { KeyMetricsCard } from './CanvasCards/KeyMetricsCard'
-import { UniqueValuePropositionCard } from './CanvasCards/UniqueValuePropositionCard'
-import { UnfairAdvantageCard } from './CanvasCards/UnfairAdvantageCard'
-import { ChannelsCard } from './CanvasCards/ChannelsCard'
-import { CustomerSegmentsCard } from './CanvasCards/CustomerSegmentsCard'
-import { CostStructureCard } from './CanvasCards/CostStructureCard'
-import { RevenueStreamCard } from './CanvasCards/RevenueStreamCard'
+import { ProblemCard } from '../components/CanvasCards/ProblemCard'
+import { SolutionCard } from '../components/CanvasCards/SolutionCard'
+import { KeyMetricsCard } from '../components/CanvasCards/KeyMetricsCard'
+import { UniqueValuePropositionCard } from '../components/CanvasCards/UniqueValuePropositionCard'
+import { UnfairAdvantageCard } from '../components/CanvasCards/UnfairAdvantageCard'
+import { ChannelsCard } from '../components/CanvasCards/ChannelsCard'
+import { CustomerSegmentsCard } from '../components/CanvasCards/CustomerSegmentsCard'
+import { CostStructureCard } from '../components/CanvasCards/CostStructureCard'
+import { RevenueStreamCard } from '../components/CanvasCards/RevenueStreamCard'
 class CanvasContainer extends Component {
     constructor(props) {
         super(props);
