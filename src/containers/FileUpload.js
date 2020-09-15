@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { FileDropZone } from "./../components/Input/FileDropzone"
-import { TextArea, Button, Divider } from 'semantic-ui-react'
+import { TextArea, Button, Divider, Checkbox } from 'semantic-ui-react'
+import Markdown from "react-markdown";
 
 class FileUpload extends Component {
     constructor(props) {
@@ -9,6 +10,7 @@ class FileUpload extends Component {
             file: null,
             errorMsgFile: null,
             isLoading: false,
+            editorMode: true,
         }
     }
 
@@ -22,6 +24,9 @@ class FileUpload extends Component {
         this.getLeanCanvas();
     }
 
+    toggleEditorMode = (event) => {
+        this.setState({ editorMode: !this.state.editorMode });
+    }
     getLeanCanvas = () => {
         this.props.toggleInputProvided();
     }
@@ -61,57 +66,72 @@ class FileUpload extends Component {
         }
     }
     render() {
-        const { errorMsgFile, file, isLoading } = this.state;
+        const { errorMsgFile, file, isLoading, editorMode } = this.state;
         const { markdown } = this.props;
         return (
             <div className="input-container">
-                <div>
-                    <div className="input-wrapper">
-                        <h1>Lean Canvas for Devs</h1>
-                        <div className="input-segment">
-                            <div className="input-md-area">
-                                <div className="input-text-area">
-                                    <div className="toolbar">
-                                        Editor
-                                    </div>
-                                    <TextArea
-                                        fluid="true"
-                                        icon='user'
-                                        placeholder='Enter markdown content here'
-                                        value={markdown}
-                                        onChange={this.handleChange}
-                                    />
+                <div className="input-wrapper">
+                    <h1>Lean Canvas for Devs</h1>
+                    <div className="input-segment">
+                        <div className="input-md-area">
+                            <div className="input-text-area">
+                                <div className="editor-toggle-section">
+                                    <Checkbox toggle className="toggle-editor-btn" onClick={this.toggleEditorMode} />
                                 </div>
 
-                                <div className="input-drag-drop">
-                                    <FileDropZone handleDrop={this.handleDrop} file={file} />
-                                    {
-                                        errorMsgFile && (<p
-                                            className='file-error-msg'>
-                                            {errorMsgFile}
-                                        </p>)
-                                    }
-                                    <a href="https://gist.githubusercontent.com/anshusaurav/5d51cef5ac03eee17317d3aac56f35a5/raw/0145281a7b5779d3e9ec396a9c84b19a30ece608/airbnb.md"
-                                        target="_blank"
-                                        rel="noopener noreferrer">
-                                        Sample markdown available here
-                                    </a>
-                                </div>
+                                {
+                                    editorMode ? (
+                                        <>
+                                            <div className="toolbar">
+                                                Editor
+                                            </div>
+                                            <TextArea
+                                                fluid="true"
+                                                icon='user'
+                                                placeholder='Enter markdown content here'
+                                                value={markdown}
+                                                onChange={this.handleChange} />
+                                        </>
+
+                                    ) : (
+                                            <>
+                                                <div className="toolbar">
+                                                    Preview
+                                                </div>
+                                                <div className="preview">
+                                                    <Markdown source={markdown} />
+                                                </div>
+
+                                            </>
+                                        )
+                                }
                             </div>
-                            <Divider vertical>Or</Divider>
+                            <div className="input-drag-drop">
+                                <FileDropZone handleDrop={this.handleDrop} file={file} />
+                                {
+                                    errorMsgFile && (<p className='file-error-msg'>
+                                        {errorMsgFile}
+                                    </p>)
+                                }
+                                <a href="https://gist.githubusercontent.com/anshusaurav/5d51cef5ac03eee17317d3aac56f35a5/raw/0145281a7b5779d3e9ec396a9c84b19a30ece608/airbnb.md"
+                                    target="_blank"
+                                    rel="noopener noreferrer">
+                                    Sample markdown available here
+                                </a>
+                            </div>
                         </div>
-                        <Button
-                            attached='bottom'
-                            content='Submit'
-                            large
-                            primary
-                            onClick={this.handleSubmit}
-                            loading={isLoading}
-                        />
+                        <Divider vertical>Or</Divider>
                     </div>
-
-                </div>
-            </div>
+                    <Button
+                        attached='bottom'
+                        content='Submit'
+                        large
+                        primary
+                        onClick={this.handleSubmit}
+                        loading={isLoading}
+                    />
+                </div >
+            </div >
 
         );
     }
