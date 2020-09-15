@@ -2,6 +2,7 @@
    v2.0 | 20110126
    License: none (public domain)
 */
+@import url("https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@1,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@300;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700&display=swap");
 html,
@@ -144,6 +145,13 @@ table {
   .input-wrapper {
     background-color: white;
     border-radius: 1 1 0.28571429rem 0.28571429rem;
+    h1 {
+      text-align: center;
+      font-weight: 700;
+      font-size: 32px;
+      margin-top: 0.5rem;
+      font-family: "Lobster Two", cursive;
+    }
     .input-segment {
       display: flex;
       flex-direction: column;

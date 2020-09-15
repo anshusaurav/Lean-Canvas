@@ -67,7 +67,7 @@ class FileUpload extends Component {
             <div className="input-container">
                 <div>
                     <div className="input-wrapper">
-
+                        <h1>Lean Canvas for Devs</h1>
                         <div className="input-segment">
                             <div className="input-md-area">
                                 <div className="input-text-area">
