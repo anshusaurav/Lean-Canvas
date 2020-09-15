@@ -1,8 +1,8 @@
-import React, { createRef } from "react";
+import React, { Component } from "react";
 import Dropzone from "react-dropzone";
-import { TextArea, Button, Segment, Grid, Divider } from 'semantic-ui-react'
+import { TextArea, Button, Segment, Divider } from 'semantic-ui-react'
 
-class FileUpload extends React.Component {
+class FileUpload extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -10,13 +10,12 @@ class FileUpload extends React.Component {
             errorMsgFile: null,
             isLoading: false,
         }
-        this.wrapperRef = createRef();
     }
 
     handleChange = (event) => {
         this.props.onChange(event.target.value);
-
     }
+
     handleSubmit = (event) => {
         event.preventDefault();
         this.setState({ isLoading: true });
@@ -24,7 +23,6 @@ class FileUpload extends React.Component {
     }
 
     getLeanCanvas = () => {
-        this.wrapperRef.current.classList.add('slide-right')
         this.props.toggleInputProvided();
     }
 
@@ -68,26 +66,24 @@ class FileUpload extends React.Component {
         return (
             <div className="input-container">
                 <div>
-                    <div className="input-wrapper" ref={this.wrapperRef}>
+                    <div className="input-wrapper">
+
                         <Segment placeholder>
-                            <Grid
-                                columns={2}
-                                style={{ width: 780, height: 460 }}>
-                                <Grid.Column>
+                            <div className="input-md-area">
+                                <div className="input-text-area">
                                     <div className="toolbar">
                                         Editor
                                     </div>
                                     <TextArea
                                         fluid="true"
                                         icon='user'
-                                        label='Enter markdown'
                                         placeholder='Enter markdown content here'
                                         value={markdown}
                                         onChange={this.handleChange}
                                     />
-                                </Grid.Column>
+                                </div>
 
-                                <Grid.Column >
+                                <div className="input-drag-drop">
                                     <Dropzone
                                         onDrop={this.handleDrop}
                                         multiple={false}
@@ -144,8 +140,8 @@ class FileUpload extends React.Component {
                                         Sample markdown available here
                                     </a>
 
-                                </Grid.Column>
-                            </Grid>
+                                </div>
+                            </div>
 
                             <Divider vertical>Or</Divider>
                         </Segment>
@@ -153,7 +149,6 @@ class FileUpload extends React.Component {
                             attached='bottom'
                             content='Submit'
                             primary
-                            positive
                             onClick={this.handleSubmit}
                             loading={isLoading}
                         />

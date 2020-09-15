@@ -3,23 +3,23 @@ import FileUpload from './components/FileUpload'
 import CanvasContainer from './components/CanvasContainer'
 
 class Main extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            markdown: '',
-            isInputProvided: false,
-        }
+  constructor(props) {
+    super(props);
+    this.state = {
+      markdown: '',
+      isInputProvided: false,
     }
-    onChange = (md) => {
-        this.setState({ markdown: md })
-    }
-    toggleInputProvided = () => {
-        this.setState({ isInputProvided: !this.state.isInputProvided })
-    }
-    componentDidMount() {
-        this.setState({
-            markdown:
-                `# Airbnb
+  }
+  onChange = (md) => {
+    this.setState({ markdown: md })
+  }
+  toggleInputProvided = () => {
+    this.setState({ isInputProvided: !this.state.isInputProvided })
+  }
+  componentDidMount() {
+    this.setState({
+      markdown:
+        `# Airbnb
 
 ## Problem
   - Hard to find cheap/affordable accomodation options when travelling
@@ -38,7 +38,7 @@ class Main extends Component {
   
 ## Unique Value Proposition
   - Travelers can get authentics experience of local area
-  - Extra monetization of vacant areas for howmowners
+  - Extra monetization of vacant areas for homeowners
   - High Level Concept:
     - Everyone can become a host Sharing economy
       
@@ -67,21 +67,22 @@ class Main extends Component {
       
 ## Revenue Streams
   - Fees for travellers`})
-    }
-    render() {
-        const { markdown, isInputProvided } = this.state;
-        return (
-            <>
-                {
-                    isInputProvided ? (<CanvasContainer
-                        markdown={markdown} />
-                    ) : (<FileUpload markdown={markdown}
-                        onChange={this.onChange}
-                        toggleInputProvided={this.toggleInputProvided} />)
-                }
-            </>
-        );
-    }
+  }
+  render() {
+    const { markdown, isInputProvided } = this.state;
+    return (
+      <>
+        {
+          isInputProvided ? (<CanvasContainer
+            markdown={markdown}
+            toggleInputProvided={this.toggleInputProvided} />
+          ) : (<FileUpload markdown={markdown}
+            onChange={this.onChange}
+            toggleInputProvided={this.toggleInputProvided} />)
+        }
+      </>
+    );
+  }
 }
 export default Main
 

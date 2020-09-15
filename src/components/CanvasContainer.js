@@ -44,6 +44,11 @@ class CanvasContainer extends Component {
             <div className='lean-canvas'>
                 <div className="canvas-main">
                     <div className="canvas-control">
+                        <Button icon='step backward'
+                            content='Back to Editor'
+                            className="canvas-save-btn"
+                            onClick={this.props.toggleInputProvided} />
+
                         <Button icon='save'
                             content='Export as PNG'
                             className="canvas-save-btn"
@@ -54,6 +59,7 @@ class CanvasContainer extends Component {
                             className="canvas-save-btn"
                             secondary
                             onClick={this.togglePopUp} />
+
                     </div>
                     {popUpVisible && leanCanvas && (
                         <LogPopup leanCanvas={leanCanvas}

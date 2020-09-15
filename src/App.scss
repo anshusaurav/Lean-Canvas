@@ -144,13 +144,32 @@ table {
   .input-wrapper {
     background-color: white;
     border-radius: 1 1 0.28571429rem 0.28571429rem;
+    .input-md-area {
+      margin-top: -1rem;
+      margin-bottom: -1rem;
+      margin-left: -1rem;
+      margin-right: -1rem;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: stretch;
+      padding: 0;
+      width: 780px;
+      height: 460px;
+      .input-text-area,
+      .input-drag-drop {
+        width: 50%;
+        padding: 1rem;
+        position: relative;
+        display: inline-block;
+        vertical-align: top;
+      }
+    }
   }
-  .slide-right {
-    animation: 1s ease-out 0s 1 animate;
-  }
+
   .toolbar {
     padding: 0.5rem;
-    background: #3dadf2;
+    background: #2185d0;
     min-width: 100% !important;
     font-size: 1.2em;
     font-weight: 600;
@@ -272,7 +291,7 @@ table {
     right: 8px;
     z-index: 1000;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 0.5rem;
   }
   .log-wrapper {
