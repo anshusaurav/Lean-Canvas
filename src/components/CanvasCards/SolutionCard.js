@@ -10,8 +10,8 @@ export const SolutionCard = props => {
                         props.leanCanvas &&
                         props.leanCanvas.problem &&
                         props.leanCanvas.solution.list &&
-                        props.leanCanvas.solution.list.map(elem => {
-                            return <p>{elem.trim()}</p>
+                        props.leanCanvas.solution.list.map((elem, index) => {
+                            return <p key={index}>{elem.trim()}</p>
                         })
                     }
                 </div>

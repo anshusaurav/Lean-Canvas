@@ -10,8 +10,8 @@ export const KeyMetricsCard = props => {
                         props.leanCanvas &&
                         props.leanCanvas.keyMetrics &&
                         props.leanCanvas.keyMetrics.list &&
-                        props.leanCanvas.keyMetrics.list.map(elem => {
-                            return <p>{elem.trim()}</p>
+                        props.leanCanvas.keyMetrics.list.map((elem, index) => {
+                            return <p key={index}>{elem.trim()}</p>
                         })
                     }
                 </div>

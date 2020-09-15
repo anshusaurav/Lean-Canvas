@@ -1,5 +1,14 @@
 # Google
 
+## Problem
+
+- Irrelevant Search Results
+- Hard to find things
+- Existing Alternatives:
+  - Altavista
+  - Yahoo
+  - Excite
+
 ## Solution
 
 - Develop a technology that allows users to find relevant content

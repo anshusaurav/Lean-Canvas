@@ -144,6 +144,21 @@ table {
   .input-wrapper {
     background-color: white;
     border-radius: 1 1 0.28571429rem 0.28571429rem;
+    .input-segment {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: stretch;
+      max-width: initial;
+      overflow: visible;
+      padding: 1rem;
+      background: #f9fafb;
+      position: relative;
+      margin: 1rem 0;
+      border: 1px solid rgba(34, 36, 38, 0.15);
+      // border-color: rgba(34, 36, 38, 0.15);
+      // box-shadow: 0 2px 25px 0 rgba(34, 36, 38, 0.05) inset;
+    }
     .input-md-area {
       margin-top: -1rem;
       margin-bottom: -1rem;

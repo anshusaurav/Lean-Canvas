@@ -10,8 +10,8 @@ export const CostStructureCard = props => {
                         props.leanCanvas &&
                         props.leanCanvas.costStructure &&
                         props.leanCanvas.costStructure.list &&
-                        props.leanCanvas.costStructure.list.map(elem => {
-                            return <p>{elem.trim()}</p>
+                        props.leanCanvas.costStructure.list.map((elem, index) => {
+                            return <p key={index}>{elem.trim()}</p>
                         })
                     }
                 </div>

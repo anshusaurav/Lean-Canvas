@@ -10,8 +10,8 @@ export const UniqueValuePropositionCard = props => {
                         props.leanCanvas &&
                         props.leanCanvas.uniqueValueProposition &&
                         props.leanCanvas.uniqueValueProposition.list &&
-                        props.leanCanvas.uniqueValueProposition.list.map(elem => {
-                            return <p>{elem.trim()}</p>
+                        props.leanCanvas.uniqueValueProposition.list.map((elem, index) => {
+                            return <p key={index}>{elem.trim()}</p>
                         })
                     }
                 </div>
@@ -21,8 +21,8 @@ export const UniqueValuePropositionCard = props => {
                         props.leanCanvas &&
                         props.leanCanvas.uniqueValueProposition &&
                         props.leanCanvas.uniqueValueProposition.highLevelConcept &&
-                        props.leanCanvas.uniqueValueProposition.highLevelConcept.map(elem => {
-                            return <p>{elem.trim()}</p>
+                        props.leanCanvas.uniqueValueProposition.highLevelConcept.map((elem, index) => {
+                            return <p key={index}>{elem.trim()}</p>
                         })
                     }
                 </div>

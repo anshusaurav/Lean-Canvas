@@ -10,8 +10,8 @@ export const CustomerSegmentsCard = props => {
                         props.leanCanvas &&
                         props.leanCanvas.customerSegments &&
                         props.leanCanvas.customerSegments.list &&
-                        props.leanCanvas.customerSegments.list.map(elem => {
-                            return <p>{elem.trim()}</p>
+                        props.leanCanvas.customerSegments.list.map((elem, index) => {
+                            return <p key={index}>{elem.trim()}</p>
                         })
                     }
                 </div>
@@ -21,8 +21,8 @@ export const CustomerSegmentsCard = props => {
                         props.leanCanvas &&
                         props.leanCanvas.customerSegments &&
                         props.leanCanvas.customerSegments.earlyAdopters &&
-                        props.leanCanvas.customerSegments.earlyAdopters.map(elem => {
-                            return <p>{elem.trim()}</p>
+                        props.leanCanvas.customerSegments.earlyAdopters.map((elem, index) => {
+                            return <p key={index}>{elem.trim()}</p>
                         })
                     }
                 </div>

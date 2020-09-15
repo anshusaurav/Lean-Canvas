@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Dropzone from "react-dropzone";
-import { TextArea, Button, Segment, Divider } from 'semantic-ui-react'
+import { TextArea, Button, Divider } from 'semantic-ui-react'
 
 class FileUpload extends Component {
     constructor(props) {
@@ -68,7 +68,7 @@ class FileUpload extends Component {
                 <div>
                     <div className="input-wrapper">
 
-                        <Segment placeholder>
+                        <div className="input-segment">
                             <div className="input-md-area">
                                 <div className="input-text-area">
                                     <div className="toolbar">
@@ -144,7 +144,7 @@ class FileUpload extends Component {
                             </div>
 
                             <Divider vertical>Or</Divider>
-                        </Segment>
+                        </div>
                         <Button
                             attached='bottom'
                             content='Submit'

@@ -3,8 +3,8 @@ const ReportError = () => {
     return (
         <div className="error-container">
             <div>
-                <svg height="40vh" stroke-width="0.5px"
-                    stroke-linecap="round"
+                <svg height="40vh" strokeWidth="0.5px"
+                    strokeLinecap="round"
                     fill="none"
                     viewBox="0 0 9 9">
                     <path d="M4.098,1.091c1.178,-0.074 2.354,0.508 2.985,1.6c0.887,
