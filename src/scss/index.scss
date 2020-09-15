@@ -442,13 +442,14 @@ table {
     padding: 0.5rem;
     border-radius: 0.4rem;
     overflow-y: auto;
+
     &:hover {
       box-shadow: 0 2px 8px #bbb;
     }
     .box-icon {
       position: absolute;
-      top: 2px;
-      right: 2px;
+      top: 1px;
+      right: 1px;
       z-index: 10;
     }
     .box-right-traingle {
