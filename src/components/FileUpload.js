@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Dropzone from "react-dropzone";
+import { FileDropZone } from "./Input/FileDropzone";
 import { TextArea, Button, Divider } from 'semantic-ui-react'
 
 class FileUpload extends Component {
@@ -84,44 +84,7 @@ class FileUpload extends Component {
                                 </div>
 
                                 <div className="input-drag-drop">
-                                    <Dropzone
-                                        onDrop={this.handleDrop}
-                                        multiple={false}
-                                    >
-
-                                        {({ getRootProps, getInputProps, isDragActive }) => (
-                                            <div {...getRootProps({ className: "dropzone" })}>
-                                                <input {...getInputProps()} />
-                                                <span style={{ fontSize: 24 }}>
-                                                    {isDragActive ? "📂" : "📁"}
-                                                </span>
-                                                <p>
-                                                    Drag'n'drop markdown, or click to select file
-                                                </p>
-                                                {file && <div className="file-preview">
-                                                    <div className="file-preview-img">
-
-                                                    </div>
-                                                    <div className="file-preview-details">
-                                                        <div className="file-preview-details-size">
-                                                            <span>
-                                                                <strong>
-                                                                    {file.size / 1000}
-                                                                </strong>
-                                                                     KB
-                                                            </span>
-                                                        </div>
-                                                        <div className="file-preview-details-filename">
-                                                            <span>
-                                                                {file.name}
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                }
-                                            </div>
-                                        )}
-                                    </Dropzone>
+                                    <FileDropZone handleDrop={this.handleDrop} file={file} />
                                     {
                                         errorMsgFile && (<p
                                             className='file-error-msg'>
