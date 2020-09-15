@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-class ReportError extends Component {
-    render() {
-        return (<div className="error-container">
+import React from 'react';
+const ReportError = () => {
+    return (
+        <div className="error-container">
             <div>
                 <svg height="40vh" stroke-width="0.5px"
                     stroke-linecap="round"
@@ -26,8 +26,7 @@ class ReportError extends Component {
                 </svg>
                 <p>Error in parsing. Check log for details.</p>
             </div>
-        </div>);
-
-    }
+        </div>
+    );
 }
 export default ReportError
