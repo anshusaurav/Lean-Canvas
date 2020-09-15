@@ -121,28 +121,20 @@ class FileUpload extends Component {
                                                 }
                                             </div>
                                         )}
-                                        {/* {
-                                            
-                                        } */}
                                     </Dropzone>
-                                    <div>
-
-                                        {
-                                            errorMsgFile && (<p
-                                                className='file-error-msg'>
-                                                {errorMsgFile}
-                                            </p>)
-                                        }
-                                    </div>
+                                    {
+                                        errorMsgFile && (<p
+                                            className='file-error-msg'>
+                                            {errorMsgFile}
+                                        </p>)
+                                    }
                                     <a href="https://gist.githubusercontent.com/anshusaurav/5d51cef5ac03eee17317d3aac56f35a5/raw/0145281a7b5779d3e9ec396a9c84b19a30ece608/airbnb.md"
                                         target="_blank"
                                         rel="noopener noreferrer">
                                         Sample markdown available here
                                     </a>
-
                                 </div>
                             </div>
-
                             <Divider vertical>Or</Divider>
                         </div>
                         <Button

@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import LeanCanvasApp from './LeanCanvasApp';
 
 ReactDOM.render(
-  <App />,
+  <LeanCanvasApp />,
   document.getElementById('root')
 );
