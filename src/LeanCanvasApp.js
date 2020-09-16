@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import FileUpload from './containers/FileUpload'
 import CanvasContainer from './containers/CanvasContainer'
+import LeanCanvasContext from './context/LeanCanvasContext'
 import './scss/index.scss';
 import "semantic-ui-css/semantic.min.css";
+
 class Main extends Component {
   constructor(props) {
     super(props);
@@ -17,20 +19,19 @@ class Main extends Component {
   toggleInputProvided = () => {
     this.setState({ isInputProvided: !this.state.isInputProvided })
   }
-
   render() {
     const { markdown, isInputProvided } = this.state;
     return (
-      <>
-        {
-          isInputProvided ? (<CanvasContainer
-            markdown={markdown}
-            toggleInputProvided={this.toggleInputProvided} />
-          ) : (<FileUpload markdown={markdown}
-            onChange={this.onChange}
-            toggleInputProvided={this.toggleInputProvided} />)
+      <LeanCanvasContext.Provider value={{
+        toggleInputProvided: this.toggleInputProvided,
+        onChange: this.onChange,
+        markdown,
+        isInputProvided,
+      }}>
+        {isInputProvided ? (<CanvasContainer />) : (<FileUpload />)
         }
-      </>
+
+      </LeanCanvasContext.Provider>
     );
   }
 }

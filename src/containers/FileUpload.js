@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { FileDropZone } from "./../components/Input/FileDropzone"
 import { TextArea, Button, Divider, Checkbox } from 'semantic-ui-react'
 import Markdown from "react-markdown";
+import LeanCanvasContext from '../context/LeanCanvasContext'
 
 class FileUpload extends Component {
     constructor(props) {
@@ -28,7 +29,7 @@ class FileUpload extends Component {
         this.setState({ editorMode: !this.state.editorMode });
     }
     getLeanCanvas = () => {
-        this.props.toggleInputProvided();
+        this.context.toggleInputProvided();
     }
 
     handleDrop = (acceptedFiles) => {
@@ -67,7 +68,7 @@ class FileUpload extends Component {
     }
     render() {
         const { errorMsgFile, file, isLoading, editorMode } = this.state;
-        const { markdown } = this.props;
+        const { markdown } = this.context;
         return (
             <div className="input-container">
                 <div className="input-wrapper">
@@ -139,5 +140,7 @@ class FileUpload extends Component {
         );
     }
 }
+
+FileUpload.contextType = LeanCanvasContext
 
 export default FileUpload;

@@ -1,10 +1,10 @@
 import React, { Component, createRef } from 'react'
 import marked from "marked";
+import LogPopup from './LogPopup';
+import ReportError from './ReportError'
 import { Button } from 'semantic-ui-react'
 import { exportComponentAsPNG } from "react-component-export-image";
 import { process } from '../utilities/FileReadUtilities'
-import LogPopup from './LogPopup';
-import ReportError from './ReportError'
 import { ProblemCard } from '../components/CanvasCards/ProblemCard'
 import { SolutionCard } from '../components/CanvasCards/SolutionCard'
 import { KeyMetricsCard } from '../components/CanvasCards/KeyMetricsCard'
@@ -14,6 +14,7 @@ import { ChannelsCard } from '../components/CanvasCards/ChannelsCard'
 import { CustomerSegmentsCard } from '../components/CanvasCards/CustomerSegmentsCard'
 import { CostStructureCard } from '../components/CanvasCards/CostStructureCard'
 import { RevenueStreamCard } from '../components/CanvasCards/RevenueStreamCard'
+import LeanCanvasContext from '../context/LeanCanvasContext'
 class CanvasContainer extends Component {
     constructor(props) {
         super(props);
@@ -24,8 +25,7 @@ class CanvasContainer extends Component {
         this.canvasWrapperRef = createRef();
     }
     parseMarkdown = () => {
-        const jsonraw = marked.lexer(this.props.markdown);
-        // console.log(jsonraw);
+        const jsonraw = marked.lexer(this.context.markdown);
         this.setState({ leanCanvas: process(jsonraw) })
     }
     exportAsPng = () => {
@@ -90,5 +90,5 @@ class CanvasContainer extends Component {
     }
 }
 
-
+CanvasContainer.contextType = LeanCanvasContext
 export default CanvasContainer;

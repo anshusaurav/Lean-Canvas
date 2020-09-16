@@ -363,6 +363,8 @@ table {
     top: 20%;
     left: calc(50% - 248px);
     width: 496px;
+    border: 1px solid #000;
+    border-radius: 4px;
     .log-wrapper-content {
       position: relative;
       .close-btn {
