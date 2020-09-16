@@ -208,11 +208,7 @@ table {
       .editor-toggle-section {
         position: absolute;
         top: 4px;
-        right: -32px !important;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-gap: 0.2rem;
-        justify-content: baseline;
+        right: 16px;
         span {
           font-family: Lato, sans-serif;
         }
@@ -353,7 +349,6 @@ table {
     grid-gap: 0.5rem;
   }
   .log-wrapper {
-    // font-family: "Overpass Mono", monospace;
     font: 11pt/1.25 "Overpass Mono", monospace;
     padding: 0.25rem 0.5rem;
     z-index: 100;

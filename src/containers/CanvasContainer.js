@@ -47,7 +47,7 @@ class CanvasContainer extends Component {
                         <Button icon='step backward'
                             content='Back to Editor'
                             className="canvas-save-btn"
-                            onClick={this.props.toggleInputProvided} />
+                            onClick={this.context.toggleInputProvided} />
 
                         <Button icon='save'
                             content='Export as PNG'
