@@ -1,5 +1,8 @@
 # Lean Canvas for Devs
 
+[Live link](https://lean-canvas.netlify.app)
+
+
 Empower developers to generate a Lean Canvas for their business by creating a Dev Friendly Canvanizer.
 
 Create a web interface that can accept the content for a Lean Canvas as Markdown and generate a lean canvas from it.
