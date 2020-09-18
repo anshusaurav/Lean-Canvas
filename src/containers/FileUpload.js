@@ -16,7 +16,7 @@ class FileUpload extends Component {
     }
 
     handleChange = (event) => {
-        this.props.onChange(event.target.value);
+        this.context.onChange(event.target.value);
     }
 
     handleSubmit = (event) => {
@@ -56,7 +56,7 @@ class FileUpload extends Component {
                         errorMsgFile: null,
                         file: acceptedFiles[0]
                     });
-                    this.props.onChange(reader.result);
+                    this.context.onChange(reader.result);
                 }
 
                 reader.readAsText(file);
